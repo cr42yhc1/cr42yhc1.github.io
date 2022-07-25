@@ -14,16 +14,16 @@ href="https://github.com/Fndroid/clash_for_windows_pkg/releases">下载链接</a
 <figure>
 <img
 src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/win1.png"
-alt="win1" />
-<figcaption aria-hidden="true">win1</figcaption>
+alt="下载页面" />
+<figcaption aria-hidden="true">下载页面</figcaption>
 </figure></li>
 <li><p>解压后，在首页导入你的节点</p></li>
 </ol>
 <figure>
 <img
 src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/win导入.png"
-alt="win导入" />
-<figcaption aria-hidden="true">win导入</figcaption>
+alt="clash链接导入" />
+<figcaption aria-hidden="true">clash链接导入</figcaption>
 </figure>
 <ol start="3" type="1">
 <li>最后在clash首页配进行如图所示的配置</li>
@@ -31,8 +31,8 @@ alt="win导入" />
 <figure>
 <img
 src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/clash配置.png"
-alt="clash配置" />
-<figcaption aria-hidden="true">clash配置</figcaption>
+alt="clash客户端配置" />
+<figcaption aria-hidden="true">clash客户端配置</figcaption>
 </figure>
 <h1 id="ios端">IOS端</h1>
 <p>首先你已经有🚀或者IOS版的🐱了，没有的话自己下一个。</p>
