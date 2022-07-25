@@ -131,4 +131,94 @@ class="math inline">\(N\)</span>是channel中的neuron数量.</p>
         <tag>基础知识</tag>
       </tags>
   </entry>
+  <entry>
+    <title>IOS-Android-Windows-Ubuntu通过某些软件访问学术网站</title>
+    <url>/2022/07/25/IOS-Android-Windows-Ubuntu%E9%80%9A%E8%BF%87%E6%9F%90%E4%BA%9B%E8%BD%AF%E4%BB%B6%E8%AE%BF%E9%97%AE%E5%AD%A6%E6%9C%AF%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>当我们处于校园网环境时，有时候一些供我们学习的网站例如Github，StackOverflow，甚至我看论文上IEEE、arxiv连接都十分不稳定，经常出现打不开的情况，但是当我们把网络切换成数据流量的时候，一切又变得正常了，这似乎已经可以解决问题了。但是我用的是台式机啊，使用数据流量十分不方便，我需要手机下载好这些东西以后再用“小而美”软件以极慢的速度传到电脑，还不能超过500M，设想一下，如果我要配置ImageNet2012数据集(150G)那这几乎是不可能的了。</p>
+<p>那么我们要如何解决这种问题呢？</p>
+<p><strong>注意：本教程只讨论访问学术网站的节点，一切法律禁止的网站本站不提供教程。</strong></p>
+<h1 id="windows端ubuntu">Windows端/Ubuntu</h1>
+<p>建议下载clash for windows<a
+href="https://github.com/Fndroid/clash_for_windows_pkg/releases">下载链接</a></p>
+<ol type="1">
+<li><p>选择对应的版本，有linux版本。</p>
+<figure>
+<img
+src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/win1.png"
+alt="win1" />
+<figcaption aria-hidden="true">win1</figcaption>
+</figure></li>
+<li><p>解压后，在首页导入你的节点</p></li>
+</ol>
+<figure>
+<img
+src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/win导入.png"
+alt="win导入" />
+<figcaption aria-hidden="true">win导入</figcaption>
+</figure>
+<ol start="3" type="1">
+<li>最后在clash首页配进行如图所示的配置</li>
+</ol>
+<figure>
+<img
+src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/clash配置.png"
+alt="clash配置" />
+<figcaption aria-hidden="true">clash配置</figcaption>
+</figure>
+<h1 id="ios端">IOS端</h1>
+<p>首先你已经有🚀或者IOS版的🐱了，没有的话自己下一个。</p>
+<h4 id="section">1. 🐱</h4>
+<p>在clash链接里选择复制链接，到stash&gt;设置&gt;配置文件&gt;从URL下载&gt;粘贴</p>
+<h4 id="section-1">2.🚀</h4>
+<p>🚀订阅一键导入</p>
+<h1 id="andriod端">Andriod端</h1>
+<h4 id="获取应用">1. 获取应用</h4>
+<p>安卓手机用户可以选择使用 V2rayNG 或者 Clash 作为客户端。 Clash for
+Android 是基于 Clash Core 完成的 Android 应用程序。</p>
+<p>优点：</p>
+<ul>
+<li><strong>可切换代理模式以及节点</strong></li>
+<li><strong>支持节点批量测试延迟</strong></li>
+<li><strong>方便使用</strong></li>
+</ul>
+<p><a
+href="https://github.com/2dust/v2rayNG/releases/">下载V2rayNG</a></p>
+<p>选择最新版本的Asset，一般来说下载第一个apk文件就可以了。</p>
+<h4 id="导入链接">2. 导入链接</h4>
+<p>首先打开软件，点击左上角的三个横杠，点击订阅设置选项</p>
+<figure>
+<img
+src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android1.jpg"
+alt="android1" />
+<figcaption aria-hidden="true">android1</figcaption>
+</figure>
+<p>进入后点击右上角加号</p>
+<figure>
+<img
+src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android2.jpg"
+alt="android2" />
+<figcaption aria-hidden="true">android2</figcaption>
+</figure>
+<p>将官网的一键订阅链接复制到url处保存</p>
+<figure>
+<img
+src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android3.jpg"
+alt="android3" />
+<figcaption aria-hidden="true">android3</figcaption>
+</figure>
+<p>返回app主界面后，点击右上角的三个点，选择更新订阅即可，如果更新失败请先断开所有节点的连接。</p>
+<figure>
+<img
+src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android4.jpg"
+alt="android4" />
+<figcaption aria-hidden="true">android4</figcaption>
+</figure>
+]]></content>
+      <categories>
+        <category>基本操作</category>
+      </categories>
+      <tags>
+        <tag>基本操作</tag>
+      </tags>
+  </entry>
 </search>
