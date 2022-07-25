@@ -55,33 +55,13 @@ href="https://github.com/2dust/v2rayNG/releases/">下载V2rayNG</a></p>
 <p>选择最新版本的Asset，一般来说下载第一个apk文件就可以了。</p>
 <h4 id="导入链接">2. 导入链接</h4>
 <p>首先打开软件，点击左上角的三个横杠，点击订阅设置选项</p>
-<figure>
-<img
-src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android1.jpg"
-alt="android1" />
-<figcaption aria-hidden="true">android1</figcaption>
-</figure>
+<p><img src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android1.jpg" alt="点击订阅设置" style="zoom:50%;" /></p>
 <p>进入后点击右上角加号</p>
-<figure>
-<img
-src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android2.jpg"
-alt="android2" />
-<figcaption aria-hidden="true">android2</figcaption>
-</figure>
+<p><img src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android2.jpg" alt="点击加号" style="zoom:50%;" /></p>
 <p>将官网的一键订阅链接复制到url处保存</p>
-<figure>
-<img
-src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android3.jpg"
-alt="android3" />
-<figcaption aria-hidden="true">android3</figcaption>
-</figure>
+<p><img src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android3.jpg" alt="输入url" style="zoom:50%;" /></p>
 <p>返回app主界面后，点击右上角的三个点，选择更新订阅即可，如果更新失败请先断开所有节点的连接。</p>
-<figure>
-<img
-src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android4.jpg"
-alt="android4" />
-<figcaption aria-hidden="true">android4</figcaption>
-</figure>
+<p><img src="/images/IOS-Android-Windows-Ubuntu通过某些软件访问学术网站/android4.jpg" alt="更新订阅" style="zoom:50%;" /></p>
 ]]></content>
       <categories>
         <category>基本操作</category>
