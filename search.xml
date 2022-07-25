@@ -1,137 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>deepin配置Qv2ray及插件安装简明教程</title>
-    <url>/2022/07/21/deepin%E9%85%8D%E7%BD%AEQv2ray%E5%8F%8A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<p>上一篇文章中详细描述了我安装deepin系统的过程以及踩到的雷，对我们这行这玩意还是挺需要的，都是学习用，不做违法乱纪的事。下面分享一下配置qv2ray的经验和大家交流。</p>
-<p><strong>总步骤：下载qv2ray软件，安装v2ray内核及插件。</strong></p>
-<ol type="1">
-<li><p>下载软件，可以在商店下载，但是版本似乎跟不上，下面附上<a
-href="https://github.com/Qv2ray/QvPlugin-Trojan/releases/tag/v3.0.0-pre3">github链接</a><strong>注意插件也在这里下载。</strong></p></li>
-<li><p>之后是<a
-href="https://github.com/v2fly/v2ray-core/releases">下载内核</a></p></li>
-<li><p>完成后解压内核文件，并将这四个文件的属性打开，如图</p>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/20210618183747794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
-alt="选择允许以程序运行" />
-<figcaption aria-hidden="true">选择允许以程序运行</figcaption>
-</figure>
-<p>然后将它们复制到文件夹/home/你的用户名/.config/qv2ray/vcore
-下，如果进不去.config可以通过这个方法：运行qv2ray-&gt;插件-&gt;打开本地插件目录就进入了。之后的插件要复制进/.config/qv2ray/plugins里面后，重启v2ray即可运行。</p></li>
-</ol>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/20210618184450468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
-alt="进入.config" />
-<figcaption aria-hidden="true">进入.config</figcaption>
-</figure>
-<p>剩下就是你自己配置啦，自己导入节点开始上网吧。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>liunx</tag>
-        <tag>deepin</tag>
-        <tag>qv2ray</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>win-deepin双系统安装及输入密码后开机黑屏解决方案</title>
-    <url>/2022/07/21/win-deepin%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E5%90%8E%E5%BC%80%E6%9C%BA%E9%BB%91%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[第一次做双系统，尤其是Deepin比较特殊，遇到了一些不太常见的问题，做此笔记防止日后遇到同样的问题，也希望能帮到读者。因为全程没有截屏，只能凭借记忆和文字来描述。
-<h3>
-第一步:windows下分盘
-</h3>
-<p>我是装机小白，在这里遇到的问题卡了我很久，搜问题的方式也不太对，很长一段时间都没有搜索到正确的解决方案，我的硬盘是SSD128G+机械1T。分盘：计算机-&gt;管理-&gt;磁盘管理
-里面分出100G的空间（反正我是这么分的），但是这里要注意硬盘的状态和格式，此前我的硬盘是动态硬盘，进入deepin引导后检测不到我分出的100G，只能搜索到931G（1T）的机械硬盘和128G的SSD。</p>
-<p><strong>原因似乎是因为deepin无法检测到动态盘的分区</strong>
-硬要安装也没事，也就是把整个机械格了。但是我分那100G干嘛呢？
-<strong>解决方案：下载傲梅分区助手，运行动态硬盘转换器，如果让你重启点否，运行程序很快就好了，数据也不会删除。</strong></p>
-然后硬盘就变成基本硬盘了，之后再进入引导就可以检测到我们分的100G空间。注意：在动态硬盘下分出的100G是“未分配”，而换成基本以后是“可用空间”。然而问题并没有解决，在即将安装的时候检测到我们的硬盘是MBR格式，需要关闭UEFI，然而关闭UEFI启动每台电脑似乎都不一样，而我套用各种方法都没有成功，
-<strong>解决方案：我从“MBR格式”这句话入手，下载DiskGenius，将硬盘格式转换为GPT格式即可进行安装。</strong>
-总结一下第一步需要做的事：分区、检查磁盘的格式和状态（最好是能关闭UEFI启动）。
-<h3>
-第二步：安装系统盘
-</h3>
-系统盘安装工具用deepin官网给的工具就可以了，我刚开始遇到的各种问题，每篇博客都用不一样的软件，我都下了个遍，结果根本不是安装软件的问题，所以大家相信官方就好。
-过程很简单，准备个8G以上的U盘就行了，里面数据都备份好，运行工具等着就行了。这一步很轻松。
-<h3>
-第三步：开始装系统
-</h3>
-<p>刚刚第一步基本上把问题都解释完了，在解决了之前问题的情况下就可以开始装系统了。</p>
-<ul>
-<li>首先进BIOS（每台电脑不一样，搜一下型号+BIOS即可），然后关闭在boot标签页下fast
-boot改为disable，然后将启动项改为u盘启动（这步可能解释的比较简单，其他blog写的很详细。）F10保存后不一会就会进入选择界面（默认第一个，我选的第二个，因为第一个老打不开，总之就是怪怪的，大家没啥毛病就选第一个吧）</li>
-<li>之后是选择语言，简中，点击我已阅读，下一步。到这里是选择安装的盘，可以看到我们分的100G，鼠标
-放上去右边有小图标，是对这100G进行细分的，具体方案参照：<a>https://bbs-next.deepin.org/post/197659</a>写的非常好很详细，我整个过程就是照着它抄的，不过还是遇到很多这篇文章没有遇到的问题，因此写下这篇文章帮助自己也帮助大家。</li>
-<li><h1
-id="最后就是等待安装成功了时间差不多该饮茶了">最后就是等待安装成功了，时间差不多该饮茶了。</h1>
-<h2>
-输入密码后黑屏
-</h2>
-经过我搜集的资料，主要是因为同时有I卡和N卡造成的，需要安装N卡的闭源驱动，还是上面这位老哥的文章，写的非常详细：<a>https://bbs-next.deepin.org/post/198175</a>建议这篇文章和我的步骤结合着看。因为我还是跟他描述的不一样，而且这篇文章似乎没法看到图片，因此我才接着写下去。这篇文章里提到了通过临时方案进入图形界面（最少机子没出问题奥），然后是安装显卡驱动管理器，直接在应用商店下载（终于有图了！！）</li>
-</ul>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/20210618184954471.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
-alt="显卡驱动管理器" />
-<figcaption aria-hidden="true">显卡驱动管理器</figcaption>
-</figure>
-<p>然后打开是这样的</p>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/20210618181252341.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
-alt="打开的样子" />
-<figcaption aria-hidden="true">打开的样子</figcaption>
-</figure>
-<p>注意，因为是黑屏的，打开以后选择闭源驱动（那片文章说的是用Intel的驱动，我这里没有这个选项，如果跟我情况一致就按我的做吧），确定以后应该就重启了，之后就会看到茶壶的动画，再打开就没事了。</p>
-<p>关于v2ray的配置我会另写一篇文章。</p>
-<p>最后，非常感谢deepin论坛上这位老哥文章，解决了很多的问题，另外本人能力、理解有限，如有错误还请各位高人指点。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>deepin</tag>
-        <tag>linux</tag>
-        <tag>双系统</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>神经网络中关于能量函数的简明理解</title>
-    <url>/2022/07/22/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%85%B3%E4%BA%8E%E8%83%BD%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%AE%80%E6%98%8E%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<hr />
-<p>近期在阅读论文的过程中再次出现了关于 “能量”
-的定义,本身已经逃避基础定义很久的我决定回到这些基础工作中,把定义吃透.</p>
-<p>首先我们知道熵和能量，最少知道这两个词。我们从最基本的原理开始讲:</p>
-<p>大家都知道,熵是表示系统混乱程度的一个概念,举一个教科书上的例子:在我们买来一副扑克牌的时候,这副牌是分好类的,按照花色、数字排序,那么这个时候,"扑克牌"这个系统的熵我们认为它处于一个很低的状态.熵低的时候这副扑克牌肯定是不饿能玩的,因此我们要把这副牌打乱,这个时候"扑克牌"这个系统的混乱程度增加了,因此熵也增加了,而随着我们玩的越来越多,扑克牌之间的顺序越来越乱,越来越没有规律,因此熵越来越高,这就是熵增的过程.</p>
-<p>现在我们将某个范围待聚类的若干元素看成一个系统,元素之间的相异程度视为能量,那么不同类别之间的能量就越大,同类别的元素间能量越小.当我们的系统中,不断的有不同类别的元素加入进来,能量就会增大,当这些能量超过一个固定的阈值后,这些元素就要重新聚类</p>
-<figure>
-<img src="/../images/神经网络中关于能量函数的简明理解/能量.png"
-alt="能量" />
-<figcaption aria-hidden="true">能量</figcaption>
-</figure>
-<p>为什么要重新聚类呢?因为能量与熵之间的关系是呈反比的.根据熵增定律,熵越大能量就越小,因此在重新聚类后系统内的能量更小,能量越小就越稳定.</p>
-<p>在这些理解后,我们大概明白了为什么要对能量最小化了. <span
-class="math display">\[
-e_t=\frac{4(\hat\sigma^2+\lambda)}{(t-\hat\mu)^2+2\hat\sigma^2+2\lambda}
-\]</span> 其中 <span
-class="math inline">\(\hat\mu=\frac{1}{N}\sum_{i=1}^{N}x_i\)</span>,其实就是均值，<span
-class="math inline">\(\hat\sigma^2=\frac{1}{N}\sum^{N}_{i=1}(x_i-\hat\mu)^2\)</span>也就是方差;<span
-class="math inline">\(\lambda\)</span>是超参数,<span
-class="math inline">\(N\)</span>是channel中的neuron数量.</p>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>深度学习</tag>
-        <tag>基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IOS-Android-Windows-Ubuntu通过某些软件访问学术网站</title>
     <url>/2022/07/25/IOS-Android-Windows-Ubuntu%E9%80%9A%E8%BF%87%E6%9F%90%E4%BA%9B%E8%BD%AF%E4%BB%B6%E8%AE%BF%E9%97%AE%E5%AD%A6%E6%9C%AF%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<p>当我们处于校园网环境时，有时候一些供我们学习的网站例如Github，StackOverflow，甚至我看论文上IEEE、arxiv连接都十分不稳定，经常出现打不开的情况，但是当我们把网络切换成数据流量的时候，一切又变得正常了，这似乎已经可以解决问题了。但是我用的是台式机啊，使用数据流量十分不方便，我需要手机下载好这些东西以后再用“小而美”软件以极慢的速度传到电脑，还不能超过500M，设想一下，如果我要配置ImageNet2012数据集(150G)那这几乎是不可能的了。</p>
@@ -219,6 +88,137 @@ alt="android4" />
       </categories>
       <tags>
         <tag>基本操作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win-deepin双系统安装及输入密码后开机黑屏解决方案</title>
+    <url>/2022/07/21/win-deepin%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E5%90%8E%E5%BC%80%E6%9C%BA%E9%BB%91%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[第一次做双系统，尤其是Deepin比较特殊，遇到了一些不太常见的问题，做此笔记防止日后遇到同样的问题，也希望能帮到读者。因为全程没有截屏，只能凭借记忆和文字来描述。
+<h3>
+第一步:windows下分盘
+</h3>
+<p>我是装机小白，在这里遇到的问题卡了我很久，搜问题的方式也不太对，很长一段时间都没有搜索到正确的解决方案，我的硬盘是SSD128G+机械1T。分盘：计算机-&gt;管理-&gt;磁盘管理
+里面分出100G的空间（反正我是这么分的），但是这里要注意硬盘的状态和格式，此前我的硬盘是动态硬盘，进入deepin引导后检测不到我分出的100G，只能搜索到931G（1T）的机械硬盘和128G的SSD。</p>
+<p><strong>原因似乎是因为deepin无法检测到动态盘的分区</strong>
+硬要安装也没事，也就是把整个机械格了。但是我分那100G干嘛呢？
+<strong>解决方案：下载傲梅分区助手，运行动态硬盘转换器，如果让你重启点否，运行程序很快就好了，数据也不会删除。</strong></p>
+然后硬盘就变成基本硬盘了，之后再进入引导就可以检测到我们分的100G空间。注意：在动态硬盘下分出的100G是“未分配”，而换成基本以后是“可用空间”。然而问题并没有解决，在即将安装的时候检测到我们的硬盘是MBR格式，需要关闭UEFI，然而关闭UEFI启动每台电脑似乎都不一样，而我套用各种方法都没有成功，
+<strong>解决方案：我从“MBR格式”这句话入手，下载DiskGenius，将硬盘格式转换为GPT格式即可进行安装。</strong>
+总结一下第一步需要做的事：分区、检查磁盘的格式和状态（最好是能关闭UEFI启动）。
+<h3>
+第二步：安装系统盘
+</h3>
+系统盘安装工具用deepin官网给的工具就可以了，我刚开始遇到的各种问题，每篇博客都用不一样的软件，我都下了个遍，结果根本不是安装软件的问题，所以大家相信官方就好。
+过程很简单，准备个8G以上的U盘就行了，里面数据都备份好，运行工具等着就行了。这一步很轻松。
+<h3>
+第三步：开始装系统
+</h3>
+<p>刚刚第一步基本上把问题都解释完了，在解决了之前问题的情况下就可以开始装系统了。</p>
+<ul>
+<li>首先进BIOS（每台电脑不一样，搜一下型号+BIOS即可），然后关闭在boot标签页下fast
+boot改为disable，然后将启动项改为u盘启动（这步可能解释的比较简单，其他blog写的很详细。）F10保存后不一会就会进入选择界面（默认第一个，我选的第二个，因为第一个老打不开，总之就是怪怪的，大家没啥毛病就选第一个吧）</li>
+<li>之后是选择语言，简中，点击我已阅读，下一步。到这里是选择安装的盘，可以看到我们分的100G，鼠标
+放上去右边有小图标，是对这100G进行细分的，具体方案参照：<a>https://bbs-next.deepin.org/post/197659</a>写的非常好很详细，我整个过程就是照着它抄的，不过还是遇到很多这篇文章没有遇到的问题，因此写下这篇文章帮助自己也帮助大家。</li>
+<li><h1
+id="最后就是等待安装成功了时间差不多该饮茶了">最后就是等待安装成功了，时间差不多该饮茶了。</h1>
+<h2>
+输入密码后黑屏
+</h2>
+经过我搜集的资料，主要是因为同时有I卡和N卡造成的，需要安装N卡的闭源驱动，还是上面这位老哥的文章，写的非常详细：<a>https://bbs-next.deepin.org/post/198175</a>建议这篇文章和我的步骤结合着看。因为我还是跟他描述的不一样，而且这篇文章似乎没法看到图片，因此我才接着写下去。这篇文章里提到了通过临时方案进入图形界面（最少机子没出问题奥），然后是安装显卡驱动管理器，直接在应用商店下载（终于有图了！！）</li>
+</ul>
+<figure>
+<img
+src="https://img-blog.csdnimg.cn/20210618184954471.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
+alt="显卡驱动管理器" />
+<figcaption aria-hidden="true">显卡驱动管理器</figcaption>
+</figure>
+<p>然后打开是这样的</p>
+<figure>
+<img
+src="https://img-blog.csdnimg.cn/20210618181252341.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
+alt="打开的样子" />
+<figcaption aria-hidden="true">打开的样子</figcaption>
+</figure>
+<p>注意，因为是黑屏的，打开以后选择闭源驱动（那片文章说的是用Intel的驱动，我这里没有这个选项，如果跟我情况一致就按我的做吧），确定以后应该就重启了，之后就会看到茶壶的动画，再打开就没事了。</p>
+<p>关于v2ray的配置我会另写一篇文章。</p>
+<p>最后，非常感谢deepin论坛上这位老哥文章，解决了很多的问题，另外本人能力、理解有限，如有错误还请各位高人指点。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>deepin</tag>
+        <tag>双系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>神经网络中关于能量函数的简明理解</title>
+    <url>/2022/07/22/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%85%B3%E4%BA%8E%E8%83%BD%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%AE%80%E6%98%8E%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<hr />
+<p>近期在阅读论文的过程中再次出现了关于 “能量”
+的定义,本身已经逃避基础定义很久的我决定回到这些基础工作中,把定义吃透.</p>
+<p>首先我们知道熵和能量，最少知道这两个词。我们从最基本的原理开始讲:</p>
+<p>大家都知道,熵是表示系统混乱程度的一个概念,举一个教科书上的例子:在我们买来一副扑克牌的时候,这副牌是分好类的,按照花色、数字排序,那么这个时候,"扑克牌"这个系统的熵我们认为它处于一个很低的状态.熵低的时候这副扑克牌肯定是不饿能玩的,因此我们要把这副牌打乱,这个时候"扑克牌"这个系统的混乱程度增加了,因此熵也增加了,而随着我们玩的越来越多,扑克牌之间的顺序越来越乱,越来越没有规律,因此熵越来越高,这就是熵增的过程.</p>
+<p>现在我们将某个范围待聚类的若干元素看成一个系统,元素之间的相异程度视为能量,那么不同类别之间的能量就越大,同类别的元素间能量越小.当我们的系统中,不断的有不同类别的元素加入进来,能量就会增大,当这些能量超过一个固定的阈值后,这些元素就要重新聚类</p>
+<figure>
+<img src="/../images/神经网络中关于能量函数的简明理解/能量.png"
+alt="能量" />
+<figcaption aria-hidden="true">能量</figcaption>
+</figure>
+<p>为什么要重新聚类呢?因为能量与熵之间的关系是呈反比的.根据熵增定律,熵越大能量就越小,因此在重新聚类后系统内的能量更小,能量越小就越稳定.</p>
+<p>在这些理解后,我们大概明白了为什么要对能量最小化了. <span
+class="math display">\[
+e_t=\frac{4(\hat\sigma^2+\lambda)}{(t-\hat\mu)^2+2\hat\sigma^2+2\lambda}
+\]</span> 其中 <span
+class="math inline">\(\hat\mu=\frac{1}{N}\sum_{i=1}^{N}x_i\)</span>,其实就是均值，<span
+class="math inline">\(\hat\sigma^2=\frac{1}{N}\sum^{N}_{i=1}(x_i-\hat\mu)^2\)</span>也就是方差;<span
+class="math inline">\(\lambda\)</span>是超参数,<span
+class="math inline">\(N\)</span>是channel中的neuron数量.</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+        <tag>基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>deepin配置Qv2ray及插件安装简明教程</title>
+    <url>/2022/07/21/deepin%E9%85%8D%E7%BD%AEQv2ray%E5%8F%8A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p>上一篇文章中详细描述了我安装deepin系统的过程以及踩到的雷，对我们这行这玩意还是挺需要的，都是学习用，不做违法乱纪的事。下面分享一下配置qv2ray的经验和大家交流。</p>
+<p><strong>总步骤：下载qv2ray软件，安装v2ray内核及插件。</strong></p>
+<ol type="1">
+<li><p>下载软件，可以在商店下载，但是版本似乎跟不上，下面附上<a
+href="https://github.com/Qv2ray/QvPlugin-Trojan/releases/tag/v3.0.0-pre3">github链接</a><strong>注意插件也在这里下载。</strong></p></li>
+<li><p>之后是<a
+href="https://github.com/v2fly/v2ray-core/releases">下载内核</a></p></li>
+<li><p>完成后解压内核文件，并将这四个文件的属性打开，如图</p>
+<figure>
+<img
+src="https://img-blog.csdnimg.cn/20210618183747794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
+alt="选择允许以程序运行" />
+<figcaption aria-hidden="true">选择允许以程序运行</figcaption>
+</figure>
+<p>然后将它们复制到文件夹/home/你的用户名/.config/qv2ray/vcore
+下，如果进不去.config可以通过这个方法：运行qv2ray-&gt;插件-&gt;打开本地插件目录就进入了。之后的插件要复制进/.config/qv2ray/plugins里面后，重启v2ray即可运行。</p></li>
+</ol>
+<figure>
+<img
+src="https://img-blog.csdnimg.cn/20210618184450468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
+alt="进入.config" />
+<figcaption aria-hidden="true">进入.config</figcaption>
+</figure>
+<p>剩下就是你自己配置啦，自己导入节点开始上网吧。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>deepin</tag>
+        <tag>liunx</tag>
+        <tag>qv2ray</tag>
       </tags>
   </entry>
 </search>
