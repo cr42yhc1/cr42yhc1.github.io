@@ -22,22 +22,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"Sidebar Display (only for Muse | Mist), available values":["post    expand on posts automatically. Default.","always  expand for all pages automatically.","hide    expand only when click on the sidebar toggle icon.","remove  totally remove sidebar including sidebar toggle."],"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="解决win-deepin双系统环境下因为显卡驱动原因导致的黑屏">
+  <meta name="description" content="服务器端安装Jupyter并加入自己的虚拟环境">
 <meta property="og:type" content="article">
-<meta property="og:title" content="win-deepin双系统安装及输入密码后开机黑屏解决方案">
-<meta property="og:url" content="http://example.com/2022/07/21/win-deepin%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E5%90%8E%E5%BC%80%E6%9C%BA%E9%BB%91%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:title" content="Jupyter安装并添加虚拟环境">
+<meta property="og:url" content="http://example.com/2022/07/26/2022-07-26-Jupyter%E5%AE%89%E8%A3%85%E5%B9%B6%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="cr42y9的仓库">
-<meta property="og:description" content="解决win-deepin双系统环境下因为显卡驱动原因导致的黑屏">
+<meta property="og:description" content="服务器端安装Jupyter并加入自己的虚拟环境">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-21T03:32:14.000Z">
-<meta property="article:modified_time" content="2022-07-23T05:28:24.638Z">
+<meta property="article:published_time" content="2022-07-26T09:05:26.000Z">
+<meta property="article:modified_time" content="2022-07-26T09:31:15.431Z">
 <meta property="article:author" content="cr42y9">
-<meta property="article:tag" content="linux">
-<meta property="article:tag" content="deepin">
-<meta property="article:tag" content="双系统">
+<meta property="article:tag" content="Jupyter">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="pip换源">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/07/21/win-deepin%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E5%90%8E%E5%BC%80%E6%9C%BA%E9%BB%91%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/">
+<link rel="canonical" href="http://example.com/2022/07/26/2022-07-26-Jupyter%E5%AE%89%E8%A3%85%E5%B9%B6%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">
 
 
 <script id="page-configurations">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>win-deepin双系统安装及输入密码后开机黑屏解决方案 | cr42y9的仓库</title>
+  <title>Jupyter安装并添加虚拟环境 | cr42y9的仓库</title>
   
 
 
@@ -200,7 +200,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/21/win-deepin%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E5%90%8E%E5%BC%80%E6%9C%BA%E9%BB%91%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/26/2022-07-26-Jupyter%E5%AE%89%E8%A3%85%E5%B9%B6%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -213,7 +213,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          win-deepin双系统安装及输入密码后开机黑屏解决方案
+          Jupyter安装并添加虚拟环境
         </h1>
 
         <div class="post-meta">
@@ -222,23 +222,21 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-07-21 11:32:14" itemprop="dateCreated datePublished" datetime="2022-07-21T11:32:14+08:00">2022-07-21</time>
+              <time title="创建时间：2022-07-26 17:05:26 / 修改时间：17:31:15" itemprop="dateCreated datePublished" datetime="2022-07-26T17:05:26+08:00">2022-07-26</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-23 13:28:24" itemprop="dateModified" datetime="2022-07-23T13:28:24+08:00">2022-07-23</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
                 </span>
             </span>
 
@@ -254,7 +252,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.6k</span>
+              <span>726</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -262,7 +260,7 @@
               </span>
               <span>1 分钟</span>
             </span>
-            <div class="post-description">解决win-deepin双系统环境下因为显卡驱动原因导致的黑屏</div>
+            <div class="post-description">服务器端安装Jupyter并加入自己的虚拟环境</div>
 
         </div>
       </header>
@@ -273,55 +271,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        第一次做双系统，尤其是Deepin比较特殊，遇到了一些不太常见的问题，做此笔记防止日后遇到同样的问题，也希望能帮到读者。因为全程没有截屏，只能凭借记忆和文字来描述。
-<h3>
-第一步:windows下分盘
-</h3>
-<p>我是装机小白，在这里遇到的问题卡了我很久，搜问题的方式也不太对，很长一段时间都没有搜索到正确的解决方案，我的硬盘是SSD128G+机械1T。分盘：计算机-&gt;管理-&gt;磁盘管理
-里面分出100G的空间（反正我是这么分的），但是这里要注意硬盘的状态和格式，此前我的硬盘是动态硬盘，进入deepin引导后检测不到我分出的100G，只能搜索到931G（1T）的机械硬盘和128G的SSD。</p>
-<p><strong>原因似乎是因为deepin无法检测到动态盘的分区</strong>
-硬要安装也没事，也就是把整个机械格了。但是我分那100G干嘛呢？
-<strong>解决方案：下载傲梅分区助手，运行动态硬盘转换器，如果让你重启点否，运行程序很快就好了，数据也不会删除。</strong></p>
-然后硬盘就变成基本硬盘了，之后再进入引导就可以检测到我们分的100G空间。注意：在动态硬盘下分出的100G是“未分配”，而换成基本以后是“可用空间”。然而问题并没有解决，在即将安装的时候检测到我们的硬盘是MBR格式，需要关闭UEFI，然而关闭UEFI启动每台电脑似乎都不一样，而我套用各种方法都没有成功，
-<strong>解决方案：我从“MBR格式”这句话入手，下载DiskGenius，将硬盘格式转换为GPT格式即可进行安装。</strong>
-总结一下第一步需要做的事：分区、检查磁盘的格式和状态（最好是能关闭UEFI启动）。
-<h3>
-第二步：安装系统盘
-</h3>
-系统盘安装工具用deepin官网给的工具就可以了，我刚开始遇到的各种问题，每篇博客都用不一样的软件，我都下了个遍，结果根本不是安装软件的问题，所以大家相信官方就好。
-过程很简单，准备个8G以上的U盘就行了，里面数据都备份好，运行工具等着就行了。这一步很轻松。
-<h3>
-第三步：开始装系统
-</h3>
-<p>刚刚第一步基本上把问题都解释完了，在解决了之前问题的情况下就可以开始装系统了。</p>
-<ul>
-<li>首先进BIOS（每台电脑不一样，搜一下型号+BIOS即可），然后关闭在boot标签页下fast
-boot改为disable，然后将启动项改为u盘启动（这步可能解释的比较简单，其他blog写的很详细。）F10保存后不一会就会进入选择界面（默认第一个，我选的第二个，因为第一个老打不开，总之就是怪怪的，大家没啥毛病就选第一个吧）</li>
-<li>之后是选择语言，简中，点击我已阅读，下一步。到这里是选择安装的盘，可以看到我们分的100G，鼠标
-放上去右边有小图标，是对这100G进行细分的，具体方案参照：<a>https://bbs-next.deepin.org/post/197659</a>写的非常好很详细，我整个过程就是照着它抄的，不过还是遇到很多这篇文章没有遇到的问题，因此写下这篇文章帮助自己也帮助大家。</li>
-<li><h1
-id="最后就是等待安装成功了时间差不多该饮茶了">最后就是等待安装成功了，时间差不多该饮茶了。</h1>
-<h2>
-输入密码后黑屏
-</h2>
-经过我搜集的资料，主要是因为同时有I卡和N卡造成的，需要安装N卡的闭源驱动，还是上面这位老哥的文章，写的非常详细：<a>https://bbs-next.deepin.org/post/198175</a>建议这篇文章和我的步骤结合着看。因为我还是跟他描述的不一样，而且这篇文章似乎没法看到图片，因此我才接着写下去。这篇文章里提到了通过临时方案进入图形界面（最少机子没出问题奥），然后是安装显卡驱动管理器，直接在应用商店下载（终于有图了！！）</li>
-</ul>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/20210618184954471.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
-alt="显卡驱动管理器" />
-<figcaption aria-hidden="true">显卡驱动管理器</figcaption>
-</figure>
-<p>然后打开是这样的</p>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/20210618181252341.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
-alt="打开的样子" />
-<figcaption aria-hidden="true">打开的样子</figcaption>
-</figure>
-<p>注意，因为是黑屏的，打开以后选择闭源驱动（那片文章说的是用Intel的驱动，我这里没有这个选项，如果跟我情况一致就按我的做吧），确定以后应该就重启了，之后就会看到茶壶的动画，再打开就没事了。</p>
-<p>关于v2ray的配置我会另写一篇文章。</p>
-<p>最后，非常感谢deepin论坛上这位老哥文章，解决了很多的问题，另外本人能力、理解有限，如有错误还请各位高人指点。</p>
+        <p>近日闲来无事，有一篇论文里面用了jupyter
+notebook做一些演示，正好电脑里面没装，可是转念一想，干脆装服务器里得了。服务器是Ubuntu
+20.04，因为实验室的同学都在用，想着还是给大家装一下吧。</p>
+<h3 id="安装">1. 安装</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure>
+<p>pip如果需要换源的话，先执行下面的命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.pip</span><br><span class="line">vim ~/.pip/pip.conf</span><br></pre></td></tr></table></figure>
+<p>然后按i进入insert模式插入以下文字。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/pypi/</span>simple</span><br></pre></td></tr></table></figure>
+<p>然后esc退出insert模式:wq保存并退出</p>
+<p>如果你是windows用户：</p>
+<p>在C:/user/xxx/pip/pip.ini文件下输入上述内容即可，xxx是你的用户名</p>
+<p>pip或者pip.ini没有的话自己新建。</p>
+<p>另外如果你需要配置代理，在index-url下再加一行</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy <span class="operator">=</span> http://<span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>:xx</span><br></pre></td></tr></table></figure>
+<h3 id="直接打开">2. 直接打开</h3>
+<p>我的操作比较简单粗暴，直接执行jupyter
+notebook就可以看到url了，如果是使用个人电脑的话直接复制url打开浏览器就可以访问了，但是我们是服务器，我们没有图形化界面，因此我们的连接都是远程访问</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook <span class="attr">--allow-root</span> <span class="attr">--ip</span>=<span class="string">&#x27;0.0.0.0&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>因为是在root下执行的，要多加一个指令，0.0.0.0表示接受所有连接。</p>
+<p>jupyter是默认使用8888端口的，因此你在连接之前需要在防火墙打开8888端口</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ufw</span> <span class="literal">allow</span> <span class="number">8888</span></span><br></pre></td></tr></table></figure>
+<p>然后在浏览器输入服务器的ip:8888/?token=
+就可以打开了，记得复制一下token，开启界面以后需要用token修改密码。</p>
 
     </div>
 
@@ -331,9 +304,9 @@ alt="打开的样子" />
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/linux/" rel="tag"># linux</a>
-              <a href="/tags/deepin/" rel="tag"># deepin</a>
-              <a href="/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/" rel="tag"># 双系统</a>
+              <a href="/tags/Jupyter/" rel="tag"># Jupyter</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 服务器</a>
+              <a href="/tags/pip%E6%8D%A2%E6%BA%90/" rel="tag"># pip换源</a>
           </div>
 
         
@@ -341,11 +314,11 @@ alt="打开的样子" />
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/07/21/deepin%E9%85%8D%E7%BD%AEQv2ray%E5%8F%8A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/" rel="next" title="deepin配置Qv2ray及插件安装简明教程">
-      deepin配置Qv2ray及插件安装简明教程 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/07/25/IOS-Android-Windows-Ubuntu%E9%80%9A%E8%BF%87%E6%9F%90%E4%BA%9B%E8%BD%AF%E4%BB%B6%E8%AE%BF%E9%97%AE%E5%AD%A6%E6%9C%AF%E7%BD%91%E7%AB%99/" rel="prev" title="IOS-Android-Windows-Ubuntu通过某些软件访问学术网站">
+      <i class="fa fa-chevron-left"></i> IOS-Android-Windows-Ubuntu通过某些软件访问学术网站
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -404,15 +377,7 @@ alt="打开的样子" />
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">
-第一步:windows下分盘
-</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">
-第二步：安装系统盘
-</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">
-第三步：开始装系统
-</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E5%B0%B1%E6%98%AF%E7%AD%89%E5%BE%85%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E4%BA%86%E6%97%B6%E9%97%B4%E5%B7%AE%E4%B8%8D%E5%A4%9A%E8%AF%A5%E9%A5%AE%E8%8C%B6%E4%BA%86"><span class="nav-number"></span> <span class="nav-text">最后就是等待安装成功了，时间差不多该饮茶了。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">
-输入密码后黑屏
-</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">1. 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80"><span class="nav-number">2.</span> <span class="nav-text">2. 直接打开</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -578,59 +543,6 @@ alt="打开的样子" />
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
