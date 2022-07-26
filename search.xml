@@ -223,12 +223,15 @@ notebook做一些演示，正好电脑里面没装，可是转念一想，干脆
 <h3 id="直接打开">2. 直接打开</h3>
 <p>我的操作比较简单粗暴，直接执行jupyter
 notebook就可以看到url了，如果是使用个人电脑的话直接复制url打开浏览器就可以访问了，但是我们是服务器，我们没有图形化界面，因此我们的连接都是远程访问</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">jupyter notebook <span class="attr">--allow-root</span> <span class="attr">--ip</span>=<span class="string">&#x27;0.0.0.0&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
 <p>因为是在root下执行的，要多加一个指令，0.0.0.0表示接受所有连接。</p>
 <p>jupyter是默认使用8888端口的，因此你在连接之前需要在防火墙打开8888端口</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ufw</span> <span class="literal">allow</span> <span class="number">8888</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ufw allow 8888</span><br></pre></td></tr></table></figure>
 <p>然后在浏览器输入服务器的ip:8888/?token=
 就可以打开了，记得复制一下token，开启界面以后需要用token修改密码。</p>
+<h3 id="加入虚拟环境">3. 加入虚拟环境</h3>
+<p>步骤很简单，首先要激活你的conda环境，然后安装ipykernel</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda activate name # name=你虚拟环境的名字</span><br><span class="line">pip install ipykernel</span><br><span class="line">python -m ipykernel install --name name</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>深度学习</category>
