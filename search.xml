@@ -112,6 +112,31 @@ href="https://github.com/2dust/v2rayNG/releases/">下载V2rayNG</a></p>
       </tags>
   </entry>
   <entry>
+    <title>Numpy报错numpy.ndarray size changed</title>
+    <url>/2022/07/29/Numpy%E6%8A%A5%E9%94%99numpy.ndarray-size-changed/</url>
+    <content><![CDATA[<figure>
+<img
+src="/images/Numpy报错numpy.ndarray-size-changed/image-20220729094843665.png"
+alt="报错信息" />
+<figcaption aria-hidden="true">报错信息</figcaption>
+</figure>
+<p>学习pyskl的时候遇到的一些小问题，出现了numpy.ndarray
+size的问题，把下方的代码注释了以后仍然有问题，那么初步断定不是代码的错了，应该的导包的时候出现了包不兼容或者版本问题。一开始以为是什么大问题，本地执行没有问题，但是到服务器就不行了，想着服务器大家都在用，就懒得管了。</p>
+<p>查了一下果然是因为numpy版本比较老不兼容，手动升级一下就行了。进入虚拟环境以后执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install --upgrade numpy</span><br></pre></td></tr></table></figure>
+<p>之后重启jupyter notebook即可</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo su</span><br><span class="line">lsof -i:8888 # 得到PID</span><br><span class="line">kill -9 [PID] # kill jupyter notebook</span><br><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>基本操作</tag>
+        <tag>jupyter</tag>
+        <tag>numpy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>win-deepin双系统安装及输入密码后开机黑屏解决方案</title>
     <url>/2022/07/21/win-deepin%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E5%90%8E%E5%BC%80%E6%9C%BA%E9%BB%91%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[第一次做双系统，尤其是Deepin比较特殊，遇到了一些不太常见的问题，做此笔记防止日后遇到同样的问题，也希望能帮到读者。因为全程没有截屏，只能凭借记忆和文字来描述。
@@ -174,28 +199,35 @@ alt="打开的样子" />
       </tags>
   </entry>
   <entry>
-    <title>Numpy报错numpy.ndarray size changed</title>
-    <url>/2022/07/29/Numpy%E6%8A%A5%E9%94%99numpy.ndarray-size-changed/</url>
-    <content><![CDATA[<figure>
-<img
-src="/images/Numpy报错numpy.ndarray-size-changed/image-20220729094843665.png"
-alt="报错信息" />
-<figcaption aria-hidden="true">报错信息</figcaption>
+    <title>神经网络中关于能量函数的简明理解</title>
+    <url>/2022/07/22/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%85%B3%E4%BA%8E%E8%83%BD%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%AE%80%E6%98%8E%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<hr />
+<p>近期在阅读论文的过程中再次出现了关于 “能量”
+的定义,本身已经逃避基础定义很久的我决定回到这些基础工作中,把定义吃透.</p>
+<p>首先我们知道熵和能量，最少知道这两个词。我们从最基本的原理开始讲:</p>
+<p>大家都知道,熵是表示系统混乱程度的一个概念,举一个教科书上的例子:在我们买来一副扑克牌的时候,这副牌是分好类的,按照花色、数字排序,那么这个时候,"扑克牌"这个系统的熵我们认为它处于一个很低的状态.熵低的时候这副扑克牌肯定是不饿能玩的,因此我们要把这副牌打乱,这个时候"扑克牌"这个系统的混乱程度增加了,因此熵也增加了,而随着我们玩的越来越多,扑克牌之间的顺序越来越乱,越来越没有规律,因此熵越来越高,这就是熵增的过程.</p>
+<p>现在我们将某个范围待聚类的若干元素看成一个系统,元素之间的相异程度视为能量,那么不同类别之间的能量就越大,同类别的元素间能量越小.当我们的系统中,不断的有不同类别的元素加入进来,能量就会增大,当这些能量超过一个固定的阈值后,这些元素就要重新聚类</p>
+<figure>
+<img src="/../images/神经网络中关于能量函数的简明理解/能量.png"
+alt="能量" />
+<figcaption aria-hidden="true">能量</figcaption>
 </figure>
-<p>学习pyskl的时候遇到的一些小问题，出现了numpy.ndarray
-size的问题，把下方的代码注释了以后仍然有问题，那么初步断定不是代码的错了，应该的导包的时候出现了包不兼容或者版本问题。一开始以为是什么大问题，本地执行没有问题，但是到服务器就不行了，想着服务器大家都在用，就懒得管了。</p>
-<p>查了一下果然是因为numpy版本比较老不兼容，手动升级一下就行了。进入虚拟环境以后执行以下命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install --upgrade numpy</span><br></pre></td></tr></table></figure>
-<p>之后重启jupyter notebook即可</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo su</span><br><span class="line">lsof -i:8888 # 得到PID</span><br><span class="line">kill -9 [PID] # kill jupyter notebook</span><br><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
+<p>为什么要重新聚类呢?因为能量与熵之间的关系是呈反比的.根据熵增定律,熵越大能量就越小,因此在重新聚类后系统内的能量更小,能量越小就越稳定.</p>
+<p>在这些理解后,我们大概明白了为什么要对能量最小化了. <span
+class="math display">\[
+e_t=\frac{4(\hat\sigma^2+\lambda)}{(t-\hat\mu)^2+2\hat\sigma^2+2\lambda}
+\]</span> 其中 <span
+class="math inline">\(\hat\mu=\frac{1}{N}\sum_{i=1}^{N}x_i\)</span>,其实就是均值，<span
+class="math inline">\(\hat\sigma^2=\frac{1}{N}\sum^{N}_{i=1}(x_i-\hat\mu)^2\)</span>也就是方差;<span
+class="math inline">\(\lambda\)</span>是超参数,<span
+class="math inline">\(N\)</span>是channel中的neuron数量.</p>
 ]]></content>
       <categories>
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>基本操作</tag>
-        <tag>jupyter</tag>
-        <tag>numpy</tag>
+        <tag>深度学习</tag>
+        <tag>基础知识</tag>
       </tags>
   </entry>
   <entry>
@@ -233,38 +265,6 @@ alt="进入.config" />
         <tag>deepin</tag>
         <tag>liunx</tag>
         <tag>qv2ray</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>神经网络中关于能量函数的简明理解</title>
-    <url>/2022/07/22/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%85%B3%E4%BA%8E%E8%83%BD%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%AE%80%E6%98%8E%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<hr />
-<p>近期在阅读论文的过程中再次出现了关于 “能量”
-的定义,本身已经逃避基础定义很久的我决定回到这些基础工作中,把定义吃透.</p>
-<p>首先我们知道熵和能量，最少知道这两个词。我们从最基本的原理开始讲:</p>
-<p>大家都知道,熵是表示系统混乱程度的一个概念,举一个教科书上的例子:在我们买来一副扑克牌的时候,这副牌是分好类的,按照花色、数字排序,那么这个时候,"扑克牌"这个系统的熵我们认为它处于一个很低的状态.熵低的时候这副扑克牌肯定是不饿能玩的,因此我们要把这副牌打乱,这个时候"扑克牌"这个系统的混乱程度增加了,因此熵也增加了,而随着我们玩的越来越多,扑克牌之间的顺序越来越乱,越来越没有规律,因此熵越来越高,这就是熵增的过程.</p>
-<p>现在我们将某个范围待聚类的若干元素看成一个系统,元素之间的相异程度视为能量,那么不同类别之间的能量就越大,同类别的元素间能量越小.当我们的系统中,不断的有不同类别的元素加入进来,能量就会增大,当这些能量超过一个固定的阈值后,这些元素就要重新聚类</p>
-<figure>
-<img src="/../images/神经网络中关于能量函数的简明理解/能量.png"
-alt="能量" />
-<figcaption aria-hidden="true">能量</figcaption>
-</figure>
-<p>为什么要重新聚类呢?因为能量与熵之间的关系是呈反比的.根据熵增定律,熵越大能量就越小,因此在重新聚类后系统内的能量更小,能量越小就越稳定.</p>
-<p>在这些理解后,我们大概明白了为什么要对能量最小化了. <span
-class="math display">\[
-e_t=\frac{4(\hat\sigma^2+\lambda)}{(t-\hat\mu)^2+2\hat\sigma^2+2\lambda}
-\]</span> 其中 <span
-class="math inline">\(\hat\mu=\frac{1}{N}\sum_{i=1}^{N}x_i\)</span>,其实就是均值，<span
-class="math inline">\(\hat\sigma^2=\frac{1}{N}\sum^{N}_{i=1}(x_i-\hat\mu)^2\)</span>也就是方差;<span
-class="math inline">\(\lambda\)</span>是超参数,<span
-class="math inline">\(N\)</span>是channel中的neuron数量.</p>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>深度学习</tag>
-        <tag>基础知识</tag>
       </tags>
   </entry>
 </search>
