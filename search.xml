@@ -112,68 +112,6 @@ href="https://github.com/2dust/v2rayNG/releases/">下载V2rayNG</a></p>
       </tags>
   </entry>
   <entry>
-    <title>Numpy报错numpy.ndarray size changed</title>
-    <url>/2022/07/29/Numpy%E6%8A%A5%E9%94%99numpy.ndarray-size-changed/</url>
-    <content><![CDATA[<figure>
-<img
-src="/images/Numpy报错numpy.ndarray-size-changed/image-20220729094843665.png"
-alt="报错信息" />
-<figcaption aria-hidden="true">报错信息</figcaption>
-</figure>
-<p>学习pyskl的时候遇到的一些小问题，出现了numpy.ndarray
-size的问题，把下方的代码注释了以后仍然有问题，那么初步断定不是代码的错了，应该的导包的时候出现了包不兼容或者版本问题。一开始以为是什么大问题，本地执行没有问题，但是到服务器就不行了，想着服务器大家都在用，就懒得管了。</p>
-<p>查了一下果然是因为numpy版本比较老不兼容，手动升级一下就行了。进入虚拟环境以后执行以下命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install --upgrade numpy</span><br></pre></td></tr></table></figure>
-<p>之后重启jupyter notebook即可</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo su</span><br><span class="line">lsof -i:8888 # 得到PID</span><br><span class="line">kill -9 [PID] # kill jupyter notebook</span><br><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>基本操作</tag>
-        <tag>jupyter</tag>
-        <tag>numpy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>deepin配置Qv2ray及插件安装简明教程</title>
-    <url>/2022/07/21/deepin%E9%85%8D%E7%BD%AEQv2ray%E5%8F%8A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<p>上一篇文章中详细描述了我安装deepin系统的过程以及踩到的雷，对我们这行这玩意还是挺需要的，都是学习用，不做违法乱纪的事。下面分享一下配置qv2ray的经验和大家交流。</p>
-<p><strong>总步骤：下载qv2ray软件，安装v2ray内核及插件。</strong></p>
-<ol type="1">
-<li><p>下载软件，可以在商店下载，但是版本似乎跟不上，下面附上<a
-href="https://github.com/Qv2ray/QvPlugin-Trojan/releases/tag/v3.0.0-pre3">github链接</a><strong>注意插件也在这里下载。</strong></p></li>
-<li><p>之后是<a
-href="https://github.com/v2fly/v2ray-core/releases">下载内核</a></p></li>
-<li><p>完成后解压内核文件，并将这四个文件的属性打开，如图</p>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/20210618183747794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
-alt="选择允许以程序运行" />
-<figcaption aria-hidden="true">选择允许以程序运行</figcaption>
-</figure>
-<p>然后将它们复制到文件夹/home/你的用户名/.config/qv2ray/vcore
-下，如果进不去.config可以通过这个方法：运行qv2ray-&gt;插件-&gt;打开本地插件目录就进入了。之后的插件要复制进/.config/qv2ray/plugins里面后，重启v2ray即可运行。</p></li>
-</ol>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/20210618184450468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
-alt="进入.config" />
-<figcaption aria-hidden="true">进入.config</figcaption>
-</figure>
-<p>剩下就是你自己配置啦，自己导入节点开始上网吧。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>liunx</tag>
-        <tag>deepin</tag>
-        <tag>qv2ray</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>win-deepin双系统安装及输入密码后开机黑屏解决方案</title>
     <url>/2022/07/21/win-deepin%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E5%90%8E%E5%BC%80%E6%9C%BA%E9%BB%91%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[第一次做双系统，尤其是Deepin比较特殊，遇到了一些不太常见的问题，做此笔记防止日后遇到同样的问题，也希望能帮到读者。因为全程没有截屏，只能凭借记忆和文字来描述。
@@ -230,9 +168,71 @@ alt="打开的样子" />
         <category>linux</category>
       </categories>
       <tags>
-        <tag>deepin</tag>
         <tag>linux</tag>
+        <tag>deepin</tag>
         <tag>双系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Numpy报错numpy.ndarray size changed</title>
+    <url>/2022/07/29/Numpy%E6%8A%A5%E9%94%99numpy.ndarray-size-changed/</url>
+    <content><![CDATA[<figure>
+<img
+src="/images/Numpy报错numpy.ndarray-size-changed/image-20220729094843665.png"
+alt="报错信息" />
+<figcaption aria-hidden="true">报错信息</figcaption>
+</figure>
+<p>学习pyskl的时候遇到的一些小问题，出现了numpy.ndarray
+size的问题，把下方的代码注释了以后仍然有问题，那么初步断定不是代码的错了，应该的导包的时候出现了包不兼容或者版本问题。一开始以为是什么大问题，本地执行没有问题，但是到服务器就不行了，想着服务器大家都在用，就懒得管了。</p>
+<p>查了一下果然是因为numpy版本比较老不兼容，手动升级一下就行了。进入虚拟环境以后执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install --upgrade numpy</span><br></pre></td></tr></table></figure>
+<p>之后重启jupyter notebook即可</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo su</span><br><span class="line">lsof -i:8888 # 得到PID</span><br><span class="line">kill -9 [PID] # kill jupyter notebook</span><br><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>基本操作</tag>
+        <tag>jupyter</tag>
+        <tag>numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>deepin配置Qv2ray及插件安装简明教程</title>
+    <url>/2022/07/21/deepin%E9%85%8D%E7%BD%AEQv2ray%E5%8F%8A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p>上一篇文章中详细描述了我安装deepin系统的过程以及踩到的雷，对我们这行这玩意还是挺需要的，都是学习用，不做违法乱纪的事。下面分享一下配置qv2ray的经验和大家交流。</p>
+<p><strong>总步骤：下载qv2ray软件，安装v2ray内核及插件。</strong></p>
+<ol type="1">
+<li><p>下载软件，可以在商店下载，但是版本似乎跟不上，下面附上<a
+href="https://github.com/Qv2ray/QvPlugin-Trojan/releases/tag/v3.0.0-pre3">github链接</a><strong>注意插件也在这里下载。</strong></p></li>
+<li><p>之后是<a
+href="https://github.com/v2fly/v2ray-core/releases">下载内核</a></p></li>
+<li><p>完成后解压内核文件，并将这四个文件的属性打开，如图</p>
+<figure>
+<img
+src="https://img-blog.csdnimg.cn/20210618183747794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
+alt="选择允许以程序运行" />
+<figcaption aria-hidden="true">选择允许以程序运行</figcaption>
+</figure>
+<p>然后将它们复制到文件夹/home/你的用户名/.config/qv2ray/vcore
+下，如果进不去.config可以通过这个方法：运行qv2ray-&gt;插件-&gt;打开本地插件目录就进入了。之后的插件要复制进/.config/qv2ray/plugins里面后，重启v2ray即可运行。</p></li>
+</ol>
+<figure>
+<img
+src="https://img-blog.csdnimg.cn/20210618184450468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
+alt="进入.config" />
+<figcaption aria-hidden="true">进入.config</figcaption>
+</figure>
+<p>剩下就是你自己配置啦，自己导入节点开始上网吧。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>deepin</tag>
+        <tag>liunx</tag>
+        <tag>qv2ray</tag>
       </tags>
   </entry>
   <entry>
