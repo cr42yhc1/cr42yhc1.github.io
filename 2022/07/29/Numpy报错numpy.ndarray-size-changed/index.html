@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
@@ -132,24 +132,24 @@
 
 <nav class="site-nav">
   <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
+        <li class="menu-item menu-item-about">
 
-    <a href="/home/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">6</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -252,7 +252,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>351</span>
+              <span>347</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -271,12 +271,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <figure>
-<img
+        <p><img
 src="/images/Numpy报错numpy.ndarray-size-changed/image-20220729094843665.png"
-alt="报错信息" />
-<figcaption aria-hidden="true">报错信息</figcaption>
-</figure>
+alt="报错信息" /></p>
 <p>学习pyskl的时候遇到的一些小问题，出现了numpy.ndarray
 size的问题，把下方的代码注释了以后仍然有问题，那么初步断定不是代码的错了，应该的导包的时候出现了包不兼容或者版本问题。一开始以为是什么大问题，本地执行没有问题，但是到服务器就不行了，想着服务器大家都在用，就懒得管了。</p>
 <p>查了一下果然是因为numpy版本比较老不兼容，手动升级一下就行了。进入虚拟环境以后执行以下命令</p>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
@@ -133,24 +133,24 @@
 
 <nav class="site-nav">
   <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
+        <li class="menu-item menu-item-about">
 
-    <a href="/home/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">6</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -259,7 +259,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>749</span>
+              <span>747</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -284,11 +284,8 @@
 <p>首先我们知道熵和能量，最少知道这两个词。我们从最基本的原理开始讲:</p>
 <p>大家都知道,熵是表示系统混乱程度的一个概念,举一个教科书上的例子:在我们买来一副扑克牌的时候,这副牌是分好类的,按照花色、数字排序,那么这个时候,"扑克牌"这个系统的熵我们认为它处于一个很低的状态.熵低的时候这副扑克牌肯定是不饿能玩的,因此我们要把这副牌打乱,这个时候"扑克牌"这个系统的混乱程度增加了,因此熵也增加了,而随着我们玩的越来越多,扑克牌之间的顺序越来越乱,越来越没有规律,因此熵越来越高,这就是熵增的过程.</p>
 <p>现在我们将某个范围待聚类的若干元素看成一个系统,元素之间的相异程度视为能量,那么不同类别之间的能量就越大,同类别的元素间能量越小.当我们的系统中,不断的有不同类别的元素加入进来,能量就会增大,当这些能量超过一个固定的阈值后,这些元素就要重新聚类</p>
-<figure>
-<img src="/../images/神经网络中关于能量函数的简明理解/能量.png"
-alt="能量" />
-<figcaption aria-hidden="true">能量</figcaption>
-</figure>
+<p><img src="/../images/神经网络中关于能量函数的简明理解/能量.png"
+alt="能量" /></p>
 <p>为什么要重新聚类呢?因为能量与熵之间的关系是呈反比的.根据熵增定律,熵越大能量就越小,因此在重新聚类后系统内的能量更小,能量越小就越稳定.</p>
 <p>在这些理解后,我们大概明白了为什么要对能量最小化了. <span
 class="math display">\[
