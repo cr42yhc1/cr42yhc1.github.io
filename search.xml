@@ -41,6 +41,28 @@ notebook就可以看到url了，如果是使用个人电脑的话直接复制url
       </tags>
   </entry>
   <entry>
+    <title>Numpy报错numpy.ndarray size changed</title>
+    <url>/2022/07/29/Numpy%E6%8A%A5%E9%94%99numpy.ndarray-size-changed/</url>
+    <content><![CDATA[<p><img
+src="/images/Numpy报错numpy.ndarray-size-changed/image-20220729094843665.png"
+alt="报错信息" /></p>
+<p>学习pyskl的时候遇到的一些小问题，出现了numpy.ndarray
+size的问题，把下方的代码注释了以后仍然有问题，那么初步断定不是代码的错了，应该的导包的时候出现了包不兼容或者版本问题。一开始以为是什么大问题，本地执行没有问题，但是到服务器就不行了，想着服务器大家都在用，就懒得管了。</p>
+<p>查了一下果然是因为numpy版本比较老不兼容，手动升级一下就行了。进入虚拟环境以后执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install --upgrade numpy</span><br></pre></td></tr></table></figure>
+<p>之后重启jupyter notebook即可</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo su</span><br><span class="line">lsof -i:8888 # 得到PID</span><br><span class="line">kill -9 [PID] # kill jupyter notebook</span><br><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>jupyter</tag>
+        <tag>numpy</tag>
+        <tag>基本操作</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>IOS-Android-Windows-Ubuntu通过某些软件访问学术网站</title>
     <url>/2022/07/25/IOS-Android-Windows-Ubuntu%E9%80%9A%E8%BF%87%E6%9F%90%E4%BA%9B%E8%BD%AF%E4%BB%B6%E8%AE%BF%E9%97%AE%E5%AD%A6%E6%9C%AF%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<p>当我们处于校园网环境时，有时候一些供我们学习的网站例如Github，StackOverflow，甚至我看论文上IEEE、arxiv连接都十分不稳定，经常出现打不开的情况，但是当我们把网络切换成数据流量的时候，一切又变得正常了，这似乎已经可以解决问题了。但是我用的是台式机啊，使用数据流量十分不方便，我需要手机下载好这些东西以后再用“小而美”软件以极慢的速度传到电脑，还不能超过500M，设想一下，如果我要配置ImageNet2012数据集(150G)那这几乎是不可能的了。</p>
@@ -100,28 +122,6 @@ href="https://github.com/2dust/v2rayNG/releases/">下载V2rayNG</a></p>
       </categories>
       <tags>
         <tag>基本操作</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Numpy报错numpy.ndarray size changed</title>
-    <url>/2022/07/29/Numpy%E6%8A%A5%E9%94%99numpy.ndarray-size-changed/</url>
-    <content><![CDATA[<p><img
-src="/images/Numpy报错numpy.ndarray-size-changed/image-20220729094843665.png"
-alt="报错信息" /></p>
-<p>学习pyskl的时候遇到的一些小问题，出现了numpy.ndarray
-size的问题，把下方的代码注释了以后仍然有问题，那么初步断定不是代码的错了，应该的导包的时候出现了包不兼容或者版本问题。一开始以为是什么大问题，本地执行没有问题，但是到服务器就不行了，想着服务器大家都在用，就懒得管了。</p>
-<p>查了一下果然是因为numpy版本比较老不兼容，手动升级一下就行了。进入虚拟环境以后执行以下命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install --upgrade numpy</span><br></pre></td></tr></table></figure>
-<p>之后重启jupyter notebook即可</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo su</span><br><span class="line">lsof -i:8888 # 得到PID</span><br><span class="line">kill -9 [PID] # kill jupyter notebook</span><br><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>基本操作</tag>
-        <tag>jupyter</tag>
-        <tag>numpy</tag>
       </tags>
   </entry>
   <entry>
@@ -212,6 +212,62 @@ alt="打开的样子" /></p>
       </tags>
   </entry>
   <entry>
+    <title>回顾处理图像梯度中遇到的一些问题</title>
+    <url>/2022/08/11/%E5%9B%9E%E9%A1%BE%E5%A4%84%E7%90%86%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>近期在做一些处理图像的工作，由于代码能力太弱，基本上都是在给以前摸鱼还债。主要是计算图像的梯度。需要处理一些视频序列，本文用于记录一些细节知识，就当是给以前还债，防止以后忘记。</p>
+<h2 id="图像中梯度的概念">图像中梯度的概念</h2>
+<p>对于我这种数学不怎么好的人来说，我对梯度的理解就是求导，什么HOG一些概念我只是听过，看到的时候就是，反正之前学过，但是没有什么印象，所以下面我们一起来学习一下：</p>
+<p>首先，高等(zhong)数学里就有，一维函数的微分表示为 <span
+class="math display">\[
+\frac{\partial f}{\partial x}=\lim\limits_{\Delta x\to 0}
+\frac{f(x+\Delta x) - f(x)}{\Delta x}
+\]</span>
+但是众所周知，图像是二位的，我们把图像看作是一个二维数组，每个像素对应数组中相应位置的一个值，如果我们要对二维矩阵求梯度，就会出现偏微分，因此存在x方向和y方向的梯度，我们需要知道偏微分的定义。
+<span class="math display">\[
+\frac{\partial f(x,y)}{\partial x}=\lim\limits_{\epsilon \to 0}
+\frac{f(x + \epsilon,y)-f(x, y)}{\epsilon}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial f(x,y)}{\partial y}=\lim\limits_{\epsilon \to 0}
+\frac{f(x,y+\epsilon)-f(x, y)}{\epsilon}
+\]</span></p>
+<p>以上是二元函数中x,y偏微分的定义,当来到图像中时,<span
+class="math inline">\(\epsilon\)</span>不可能无限小,因此我们规定成1个pixel.现在给定img[i,j]表示图像所在第i行第j列的值,图像img在y方向的梯度表示为$imgdy
+= <span class="math inline">\(,x方向梯度表示为\)</span>imgdx = $</p>
+<p>其实际表现为图像在x或y方向的变化情况,从上面的式子很容易看出,例如在x方向,我们用后一列的像素值减去前一列的像素值,倘若图像中两处颜色相近,那么减出来的数就非常接近0,在二值图中就越黑,若差值越大,则越亮</p>
+<p><img src="/image-20220811195824592.png"
+alt="从左至右依次是gx,gy和原始图像" /></p>
+<p>这是一张我偶然在学校里拍到兔子的画面,因为兔子的颜色和草地颜色差距不大,在梯度图上很难找到,但是从眼前的树干能看出,x方向的光线投射在上面,gx图像上就有很明显的白色线条</p>
+<h2 id="python中的图像梯度">python中的图像梯度</h2>
+<p>解决了这个问题后,我们看一下代码是怎么实现的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">path = <span class="string">&#x27;./rabbit.jpg&#x27;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gradient</span>(<span class="params">img</span>):</span><br><span class="line">    <span class="comment"># 计算x，y方向的梯度</span></span><br><span class="line">    gx = cv2.Sobel(img, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, ksize=<span class="number">1</span>)</span><br><span class="line">    gy = cv2.Sobel(img, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, ksize=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> gx, gy</span><br><span class="line"></span><br><span class="line">img = cv2.imread(path)</span><br><span class="line">img = cv2.resize(img, (<span class="number">480</span>, <span class="number">640</span>))</span><br><span class="line"></span><br><span class="line">gx, gy = gradient(img)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;gx&#x27;</span>, gx)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;gy&#x27;</span>, gy)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;origin&#x27;</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>代码中使用了sobel算子,具体解释<a
+href="https://zhuanlan.zhihu.com/p/67197912">点击这里</a></p>
+<h2 id="单通道图像问题">单通道图像问题</h2>
+<p>在我可以获得图像x和y方向的梯度后,我发现,我处理的图像不需要RGB信息,只需要是单通道,但是经过处理后我又得到三个通道(<del>奇怪的要求</del>)</p>
+<h3 id="单通道图像的获得">1. 单通道图像的获得</h3>
+<p>cv2.imread默认将图片读取成RGB三通道<del>之前在这里浪费了好久转换成单通道图片然后又给读成三通道</del></p>
+<p>我们要确定我们现在的图像的通道数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">path = <span class="string">&#x27;./rabbit.jpg&#x27;</span></span><br><span class="line">img = cv2.imread(path)</span><br><span class="line">img = cv2.resize(img, (<span class="number">640</span>, <span class="number">480</span>))</span><br><span class="line"><span class="built_in">print</span>(img.shape)</span><br></pre></td></tr></table></figure>
+<p>这里输出是(480, 640,
+3),这里3肯定就是通道数了,如何得到单通道图像呢?</p>
+<p>我们只需要在cv2.imread的时候加一项参数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)</span><br></pre></td></tr></table></figure>
+<p>这样原始图像的灰度图就存到img里了.</p>
+<h3 id="三个通道合并">2. 三个通道合并</h3>
+<p>经过我的处理,我将一个单通道的图像变成了3张图像,合成方法如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cv2.merge([img_a, img_b, img_c])</span><br></pre></td></tr></table></figure>
+<p>注意img_a,img_b,img_c都是单通道图像,但是在cv2.merge中是按照B.G.R.的顺序输入的,a,b,c三张图像的每一个值都分别代表Blue,Green,Red的值作为输入,合并后变成一张彩色图像.</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>基础知识</tag>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>神经网络中关于能量函数的简明理解</title>
     <url>/2022/07/22/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%85%B3%E4%BA%8E%E8%83%BD%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E7%AE%80%E6%98%8E%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<hr />
@@ -236,8 +292,8 @@ class="math inline">\(N\)</span>是channel中的neuron数量.</p>
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>深度学习</tag>
         <tag>基础知识</tag>
+        <tag>深度学习</tag>
       </tags>
   </entry>
 </search>
