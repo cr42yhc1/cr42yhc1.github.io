@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Numpy报错numpy.ndarray size changed</title>
-    <url>/2022/07/29/Numpy%E6%8A%A5%E9%94%99numpy.ndarray-size-changed/</url>
-    <content><![CDATA[<p><img
-src="/images/Numpy报错numpy.ndarray-size-changed/image-20220729094843665.png"
-alt="报错信息" /></p>
-<p>学习pyskl的时候遇到的一些小问题，出现了numpy.ndarray
-size的问题，把下方的代码注释了以后仍然有问题，那么初步断定不是代码的错了，应该的导包的时候出现了包不兼容或者版本问题。一开始以为是什么大问题，本地执行没有问题，但是到服务器就不行了，想着服务器大家都在用，就懒得管了。</p>
-<p>查了一下果然是因为numpy版本比较老不兼容，手动升级一下就行了。进入虚拟环境以后执行以下命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install --upgrade numpy</span><br></pre></td></tr></table></figure>
-<p>之后重启jupyter notebook即可</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo su</span><br><span class="line">lsof -i:8888 # 得到PID</span><br><span class="line">kill -9 [PID] # kill jupyter notebook</span><br><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>jupyter</tag>
-        <tag>numpy</tag>
-        <tag>基本操作</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IOS-Android-Windows-Ubuntu通过某些软件访问学术网站</title>
     <url>/2022/07/25/IOS-Android-Windows-Ubuntu%E9%80%9A%E8%BF%87%E6%9F%90%E4%BA%9B%E8%BD%AF%E4%BB%B6%E8%AE%BF%E9%97%AE%E5%AD%A6%E6%9C%AF%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<p>当我们处于校园网环境时，有时候一些供我们学习的网站例如Github，StackOverflow，甚至我看论文上IEEE、arxiv连接都十分不稳定，经常出现打不开的情况，但是当我们把网络切换成数据流量的时候，一切又变得正常了，这似乎已经可以解决问题了。但是我用的是台式机啊，使用数据流量十分不方便，我需要手机下载好这些东西以后再用“小而美”软件以极慢的速度传到电脑，还不能超过500M，设想一下，如果我要配置ImageNet2012数据集(150G)那这几乎是不可能的了。</p>
@@ -85,34 +63,95 @@ href="https://github.com/2dust/v2rayNG/releases/">下载V2rayNG</a></p>
       </tags>
   </entry>
   <entry>
-    <title>deepin配置Qv2ray及插件安装简明教程</title>
-    <url>/2022/07/21/deepin%E9%85%8D%E7%BD%AEQv2ray%E5%8F%8A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<p>上一篇文章中详细描述了我安装deepin系统的过程以及踩到的雷，对我们这行这玩意还是挺需要的，都是学习用，不做违法乱纪的事。下面分享一下配置qv2ray的经验和大家交流。</p>
-<p><strong>总步骤：下载qv2ray软件，安装v2ray内核及插件。</strong></p>
-<ol type="1">
-<li><p>下载软件，可以在商店下载，但是版本似乎跟不上，下面附上<a
-href="https://github.com/Qv2ray/QvPlugin-Trojan/releases/tag/v3.0.0-pre3">github链接</a><strong>注意插件也在这里下载。</strong></p></li>
-<li><p>之后是<a
-href="https://github.com/v2fly/v2ray-core/releases">下载内核</a></p></li>
-<li><p>完成后解压内核文件，并将这四个文件的属性打开，如图</p>
-<p><img
-src="https://img-blog.csdnimg.cn/20210618183747794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
-alt="选择允许以程序运行" /></p>
-<p>然后将它们复制到文件夹/home/你的用户名/.config/qv2ray/vcore
-下，如果进不去.config可以通过这个方法：运行qv2ray-&gt;插件-&gt;打开本地插件目录就进入了。之后的插件要复制进/.config/qv2ray/plugins里面后，重启v2ray即可运行。</p></li>
-</ol>
-<p><img
-src="https://img-blog.csdnimg.cn/20210618184450468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
-alt="进入.config" /></p>
-<p>剩下就是你自己配置啦，自己导入节点开始上网吧。</p>
+    <title>Jupyter安装并添加虚拟环境</title>
+    <url>/2022/07/26/Jupyter%E5%AE%89%E8%A3%85%E5%B9%B6%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<p>近日闲来无事，有一篇论文里面用了jupyter
+notebook做一些演示，正好电脑里面没装，可是转念一想，干脆装服务器里得了。服务器是Ubuntu
+20.04，因为实验室的同学都在用，想着还是给大家装一下吧。</p>
+<h3 id="安装">1. 安装</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure>
+<p>pip如果需要换源的话，先执行下面的命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir ~/.pip</span><br><span class="line">vim ~/.pip/pip.conf</span><br></pre></td></tr></table></figure>
+<p>然后按i进入insert模式插入以下文字。</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/pypi/</span>simple</span><br></pre></td></tr></table></figure>
+<p>然后esc退出insert模式:wq保存并退出</p>
+<p>如果你是windows用户：</p>
+<p>在C:/user/xxx/pip/pip.ini文件下输入上述内容即可，xxx是你的用户名</p>
+<p>pip或者pip.ini没有的话自己新建。</p>
+<p>另外如果你需要配置代理，在index-url下再加一行</p>
+<figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">proxy <span class="operator">=</span> http://<span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>:xx</span><br></pre></td></tr></table></figure>
+<h3 id="直接打开">2. 直接打开</h3>
+<p>我的操作比较简单粗暴，直接执行jupyter
+notebook就可以看到url了，如果是使用个人电脑的话直接复制url打开浏览器就可以访问了，但是我们是服务器，我们没有图形化界面，因此我们的连接都是远程访问</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
+<p>因为是在root下执行的，要多加一个指令，0.0.0.0表示接受所有连接。</p>
+<p>jupyter是默认使用8888端口的，因此你在连接之前需要在防火墙打开8888端口</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ufw allow 8888</span><br></pre></td></tr></table></figure>
+<p>然后在浏览器输入服务器的ip:8888/?token=
+就可以打开了，记得复制一下token，开启界面以后需要用token修改密码。</p>
+<h3 id="加入虚拟环境">3. 加入虚拟环境</h3>
+<p>步骤很简单，首先要激活你的conda环境，然后安装ipykernel</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda activate name # name=你虚拟环境的名字</span><br><span class="line">pip install ipykernel</span><br><span class="line">python -m ipykernel install --name name</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>linux</category>
+        <category>深度学习</category>
       </categories>
       <tags>
-        <tag>deepin</tag>
-        <tag>qv2ray</tag>
-        <tag>linux</tag>
+        <tag>Jupyter</tag>
+        <tag>服务器</tag>
+        <tag>pip换源</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python数据处理(一)</title>
+    <url>/2022/08/26/python%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E4%B8%80/</url>
+    <content><![CDATA[<h2 id="前言">前言</h2>
+<p>近期终于在进行实验工作了，期间肯定是少不了处理数据的，虽然主要工作就是处理数据。目前的工作是在NTU-RGB+D的数据集上进行测试，后期可能也会做PKU-MMD等数据集（效果好的话）</p>
+<p>考虑到我出现的问题实在太多了，肯定有后续，所以这个python数据处理肯定是有下一篇的。。。</p>
+<p>本着代码能执行就不改的原则，我的代码其实并不规范，毕竟在python方面我也就个初学者水平。</p>
+<p>先说一下我们遇到的问题：我自己做了一个NTU-RGB+D的子集，但是要划分x-view和x-sub以及train、test，其实这里搞反了，我提前划分好再做子集就没这么多事了，因为这个折腾了很久。不过本身代码能力就不强，就当还债了<del>（负债累累了属于是）</del></p>
+<h2 id="读取文件">读取文件</h2>
+<p>那么我们的思路就是根据其他项目里划分好的数据列表，这里参考<a
+href="https://github.com/xp-ji/DOGV-ST3D">DOGV</a>
+,在这个项目里列表文件的位置是</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">DOGV-master/configs/NTU_120</span><br><span class="line">DOGV-master/configs/NTU_RGBD</span><br></pre></td></tr></table></figure>
+<p><img
+src="/images/python数据处理-一/image-20220826213040345-166152064255717.png"
+alt="列表文件" /></p>
+<p>先复习一下怎么读文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(filename, <span class="string">&#x27;r&#x27;</span>)  <span class="comment"># r表示只读</span></span><br></pre></td></tr></table></figure>
+<p>其他参数如下，<a
+href="https://www.runoob.com/python/python-func-open.html">菜鸟教程</a>抄的<img
+src="/images/python数据处理-一/image-20220826212645656-16615204110401-16615204157093-16615204172735-16615204285377-16615205174429-166152054574513-166152054893815.png"
+alt="open函数的参数" /></p>
+<p>现在文件读进去了，然后我们需要逐行取出文件里面的内容，先看下文件的格式</p>
+<p><img src="/images/python数据处理-一/image-20220826213215262.png"
+alt="列表文件内容" /></p>
+<p>我们能看出来，每行由三个部分组成。第一部分是Depth文件的文件名，第二部分是A后面的数-1也就是对应动作的标签，最后一部分是这个文件的总帧数。每个部分用。所以想得到文件名，按照depth_utils.py中的代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_list_file, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> flp:</span><br><span class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> flp.readlines():</span><br><span class="line">		flp_line = line.strip(<span class="string">&quot;\n&quot;</span>).split(<span class="string">&quot;\t&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>按照，flp_line[0]就是我们要的文件名。</p>
+<h2 id="取交集">取交集</h2>
+<p>看到这里你已经能够读取原始项目中的列表文件了，现在是得到我们自己制作的子集的文件列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">path = <span class="string">&#x27;path_to_your_dataset&#x27;</span></span><br><span class="line">data_list = []</span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">	data_list.append(file)</span><br></pre></td></tr></table></figure>
+<p>ok,现在你得到了两个list，那么我们要怎么取交集呢？</p>
+<p>最简单的办法当然是暴力，但是复杂度太高了，非常浪费时间，而且非常不优雅。</p>
+<p>python中当然是可以直接取交集的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data_list = []  <span class="comment"># 你的列表</span></span><br><span class="line">file_list =[]  <span class="comment"># 别人的列表</span></span><br><span class="line">inter_list = <span class="built_in">list</span>(<span class="built_in">set</span>(data_list).intersection(<span class="built_in">set</span>(file_list)))  <span class="comment"># 取交集</span></span><br></pre></td></tr></table></figure>
+<p>这样就可以把交集的结果保存到inter_list里了，为了保险，建议在这步操作执行后看一下inter_list里的内容</p>
+<h2 id="验证">验证</h2>
+<p>根据上面的操作你已经可以得到自己的x-view和x-sub了，但是我还有个担心的地方，就是有没有一种可能，我取完交集后，生成的两个文件是一样的？我们需要验证两个文件是否相同，你可以同时打开两个文件然后readlines逐行比较，但是十分不优雅，直接这么做的人肯定也不会上网搜博客了。</p>
+<p>我们引入filecmp这个库，一看名字就知道是file
+compare，执行后返回一个bool值，我们直接放if里，如果返回1表示两个文件相同，那么我们打印
+“坏了”，表示你这俩文件一样，当然如果不一样则打印“好了”表示
+那没事了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> filecmp</span><br><span class="line"><span class="keyword">if</span> filecmp.cmp(<span class="string">&#x27;x-view.txt&#x27;</span>, <span class="string">&#x27;x-sub.txt&#x27;</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;坏了&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;好了&quot;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>基本操作</tag>
+        <tag>数据处理</tag>
       </tags>
   </entry>
   <entry>
@@ -166,9 +205,40 @@ alt="打开的样子" /></p>
         <category>linux</category>
       </categories>
       <tags>
-        <tag>deepin</tag>
         <tag>linux</tag>
+        <tag>deepin</tag>
         <tag>双系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>deepin配置Qv2ray及插件安装简明教程</title>
+    <url>/2022/07/21/deepin%E9%85%8D%E7%BD%AEQv2ray%E5%8F%8A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E5%B0%8F%E7%99%BD%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p>上一篇文章中详细描述了我安装deepin系统的过程以及踩到的雷，对我们这行这玩意还是挺需要的，都是学习用，不做违法乱纪的事。下面分享一下配置qv2ray的经验和大家交流。</p>
+<p><strong>总步骤：下载qv2ray软件，安装v2ray内核及插件。</strong></p>
+<ol type="1">
+<li><p>下载软件，可以在商店下载，但是版本似乎跟不上，下面附上<a
+href="https://github.com/Qv2ray/QvPlugin-Trojan/releases/tag/v3.0.0-pre3">github链接</a><strong>注意插件也在这里下载。</strong></p></li>
+<li><p>之后是<a
+href="https://github.com/v2fly/v2ray-core/releases">下载内核</a></p></li>
+<li><p>完成后解压内核文件，并将这四个文件的属性打开，如图</p>
+<p><img
+src="https://img-blog.csdnimg.cn/20210618183747794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
+alt="选择允许以程序运行" /></p>
+<p>然后将它们复制到文件夹/home/你的用户名/.config/qv2ray/vcore
+下，如果进不去.config可以通过这个方法：运行qv2ray-&gt;插件-&gt;打开本地插件目录就进入了。之后的插件要复制进/.config/qv2ray/plugins里面后，重启v2ray即可运行。</p></li>
+</ol>
+<p><img
+src="https://img-blog.csdnimg.cn/20210618184450468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NrY3Jhenk5,size_16,color_FFFFFF,t_70#pic_center"
+alt="进入.config" /></p>
+<p>剩下就是你自己配置啦，自己导入节点开始上网吧。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>deepin</tag>
+        <tag>qv2ray</tag>
       </tags>
   </entry>
   <entry>
@@ -257,95 +327,25 @@ class="math inline">\(N\)</span>是channel中的neuron数量.</p>
       </tags>
   </entry>
   <entry>
-    <title>python数据处理(一)</title>
-    <url>/2022/08/26/python%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E4%B8%80/</url>
-    <content><![CDATA[<h2 id="前言">前言</h2>
-<p>近期终于在进行实验工作了，期间肯定是少不了处理数据的，虽然主要工作就是处理数据。目前的工作是在NTU-RGB+D的数据集上进行测试，后期可能也会做PKU-MMD等数据集（效果好的话）</p>
-<p>考虑到我出现的问题实在太多了，肯定有后续，所以这个python数据处理肯定是有下一篇的。。。</p>
-<p>本着代码能执行就不改的原则，我的代码其实并不规范，毕竟在python方面我也就个初学者水平。</p>
-<p>先说一下我们遇到的问题：我自己做了一个NTU-RGB+D的子集，但是要划分x-view和x-sub以及train、test，其实这里搞反了，我提前划分好再做子集就没这么多事了，因为这个折腾了很久。不过本身代码能力就不强，就当还债了<del>（负债累累了属于是）</del></p>
-<h2 id="读取文件">读取文件</h2>
-<p>那么我们的思路就是根据其他项目里划分好的数据列表，这里参考<a
-href="https://github.com/xp-ji/DOGV-ST3D">DOGV</a>
-,在这个项目里列表文件的位置是</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">DOGV-master/configs/NTU_120</span><br><span class="line">DOGV-master/configs/NTU_RGBD</span><br></pre></td></tr></table></figure>
-<p><img
-src="/images/python数据处理-一/image-20220826213040345-166152064255717.png"
-alt="列表文件" /></p>
-<p>先复习一下怎么读文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(filename, <span class="string">&#x27;r&#x27;</span>)  <span class="comment"># r表示只读</span></span><br></pre></td></tr></table></figure>
-<p>其他参数如下，<a
-href="https://www.runoob.com/python/python-func-open.html">菜鸟教程</a>抄的<img
-src="/images/python数据处理-一/image-20220826212645656-16615204110401-16615204157093-16615204172735-16615204285377-16615205174429-166152054574513-166152054893815.png"
-alt="open函数的参数" /></p>
-<p>现在文件读进去了，然后我们需要逐行取出文件里面的内容，先看下文件的格式</p>
-<p><img src="/images/python数据处理-一/image-20220826213215262.png"
-alt="列表文件内容" /></p>
-<p>我们能看出来，每行由三个部分组成。第一部分是Depth文件的文件名，第二部分是A后面的数-1也就是对应动作的标签，最后一部分是这个文件的总帧数。每个部分用。所以想得到文件名，按照depth_utils.py中的代码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_list_file, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> flp:</span><br><span class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> flp.readlines():</span><br><span class="line">		flp_line = line.strip(<span class="string">&quot;\n&quot;</span>).split(<span class="string">&quot;\t&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>按照，flp_line[0]就是我们要的文件名。</p>
-<h2 id="取交集">取交集</h2>
-<p>看到这里你已经能够读取原始项目中的列表文件了，现在是得到我们自己制作的子集的文件列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">path = <span class="string">&#x27;path_to_your_dataset&#x27;</span></span><br><span class="line">data_list = []</span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">	data_list.append(file)</span><br></pre></td></tr></table></figure>
-<p>ok,现在你得到了两个list，那么我们要怎么取交集呢？</p>
-<p>最简单的办法当然是暴力，但是复杂度太高了，非常浪费时间，而且非常不优雅。</p>
-<p>python中当然是可以直接取交集的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data_list = []  <span class="comment"># 你的列表</span></span><br><span class="line">file_list =[]  <span class="comment"># 别人的列表</span></span><br><span class="line">inter_list = <span class="built_in">list</span>(<span class="built_in">set</span>(data_list).intersection(<span class="built_in">set</span>(file_list)))  <span class="comment"># 取交集</span></span><br></pre></td></tr></table></figure>
-<p>这样就可以把交集的结果保存到inter_list里了，为了保险，建议在这步操作执行后看一下inter_list里的内容</p>
-<h2 id="验证">验证</h2>
-<p>根据上面的操作你已经可以得到自己的x-view和x-sub了，但是我还有个担心的地方，就是有没有一种可能，我取完交集后，生成的两个文件是一样的？我们需要验证两个文件是否相同，你可以同时打开两个文件然后readlines逐行比较，但是十分不优雅，直接这么做的人肯定也不会上网搜博客了。</p>
-<p>我们引入filecmp这个库，一看名字就知道是file
-compare，执行后返回一个bool值，我们直接放if里，如果返回1表示两个文件相同，那么我们打印
-“坏了”，表示你这俩文件一样，当然如果不一样则打印“好了”表示
-那没事了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> filecmp</span><br><span class="line"><span class="keyword">if</span> filecmp.cmp(<span class="string">&#x27;x-view.txt&#x27;</span>, <span class="string">&#x27;x-sub.txt&#x27;</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;坏了&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;好了&quot;</span>)</span><br></pre></td></tr></table></figure>
+    <title>Numpy报错numpy.ndarray size changed</title>
+    <url>/2022/07/29/Numpy%E6%8A%A5%E9%94%99numpy.ndarray-size-changed/</url>
+    <content><![CDATA[<p><img
+src="/images/Numpy报错numpy.ndarray-size-changed/image-20220729094843665.png"
+alt="报错信息" /></p>
+<p>学习pyskl的时候遇到的一些小问题，出现了numpy.ndarray
+size的问题，把下方的代码注释了以后仍然有问题，那么初步断定不是代码的错了，应该的导包的时候出现了包不兼容或者版本问题。一开始以为是什么大问题，本地执行没有问题，但是到服务器就不行了，想着服务器大家都在用，就懒得管了。</p>
+<p>查了一下果然是因为numpy版本比较老不兼容，手动升级一下就行了。进入虚拟环境以后执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install --upgrade numpy</span><br></pre></td></tr></table></figure>
+<p>之后重启jupyter notebook即可</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo su</span><br><span class="line">lsof -i:8888 # 得到PID</span><br><span class="line">kill -9 [PID] # kill jupyter notebook</span><br><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>深度学习</category>
       </categories>
       <tags>
         <tag>基本操作</tag>
-        <tag>数据处理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jupyter安装并添加虚拟环境</title>
-    <url>/2022/07/26/Jupyter%E5%AE%89%E8%A3%85%E5%B9%B6%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<p>近日闲来无事，有一篇论文里面用了jupyter
-notebook做一些演示，正好电脑里面没装，可是转念一想，干脆装服务器里得了。服务器是Ubuntu
-20.04，因为实验室的同学都在用，想着还是给大家装一下吧。</p>
-<h3 id="安装">1. 安装</h3>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure>
-<p>pip如果需要换源的话，先执行下面的命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir ~/.pip</span><br><span class="line">vim ~/.pip/pip.conf</span><br></pre></td></tr></table></figure>
-<p>然后按i进入insert模式插入以下文字。</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/pypi/</span>simple</span><br></pre></td></tr></table></figure>
-<p>然后esc退出insert模式:wq保存并退出</p>
-<p>如果你是windows用户：</p>
-<p>在C:/user/xxx/pip/pip.ini文件下输入上述内容即可，xxx是你的用户名</p>
-<p>pip或者pip.ini没有的话自己新建。</p>
-<p>另外如果你需要配置代理，在index-url下再加一行</p>
-<figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">proxy <span class="operator">=</span> http://<span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>:xx</span><br></pre></td></tr></table></figure>
-<h3 id="直接打开">2. 直接打开</h3>
-<p>我的操作比较简单粗暴，直接执行jupyter
-notebook就可以看到url了，如果是使用个人电脑的话直接复制url打开浏览器就可以访问了，但是我们是服务器，我们没有图形化界面，因此我们的连接都是远程访问</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">jupyter notebook --allow-root --ip=&#x27;0.0.0.0&#x27;</span><br></pre></td></tr></table></figure>
-<p>因为是在root下执行的，要多加一个指令，0.0.0.0表示接受所有连接。</p>
-<p>jupyter是默认使用8888端口的，因此你在连接之前需要在防火墙打开8888端口</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ufw allow 8888</span><br></pre></td></tr></table></figure>
-<p>然后在浏览器输入服务器的ip:8888/?token=
-就可以打开了，记得复制一下token，开启界面以后需要用token修改密码。</p>
-<h3 id="加入虚拟环境">3. 加入虚拟环境</h3>
-<p>步骤很简单，首先要激活你的conda环境，然后安装ipykernel</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda activate name # name=你虚拟环境的名字</span><br><span class="line">pip install ipykernel</span><br><span class="line">python -m ipykernel install --name name</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>Jupyter</tag>
-        <tag>服务器</tag>
-        <tag>pip换源</tag>
+        <tag>jupyter</tag>
+        <tag>numpy</tag>
       </tags>
   </entry>
 </search>
