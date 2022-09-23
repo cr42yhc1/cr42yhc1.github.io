@@ -395,4 +395,36 @@ alt="检查" /></p>
         <tag>conda</tag>
       </tags>
   </entry>
+  <entry>
+    <title>skeleton数据处理笔记</title>
+    <url>/2022/09/14/skeleton%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>最近在做人体骨架方面的工作，参照的论文是2s-AGCN，不过就我现在的知识储备，只能说是对skeleton一窍不通，所以写下这篇笔记记录自己遇到的问题，以及解决过程，希望给自己以及有缘看到这篇博客的人提供帮助。</p>
+<p><strong>附上<a
+href="https://arxiv.org/abs/1805.07694">论文链接</a>和<a
+href="https://github.com/lshiwjx/2s-AGCN">代码链接</a></strong></p>
+<p>有些代码GitHub上面写的很清楚，主要探讨一下我工作中遇到的一些小问题。<del>(代码能力不行，遇到的问题都比较弱智)</del></p>
+<h2 id="npy-和pkl文件的读取">1. npy 和pkl文件的读取</h2>
+<p>gen_data后，生成了若干文件，目录如下，分为.pkl和.npy</p>
+<p><img src="/images/skeleton数据处理笔记/image-20220914185112534.png"
+alt="gen_data后的文件" /></p>
+<p>注意.npy文件挺大的，直接读取的话非常吃内存。<del>16G还是太小了</del></p>
+<p>读取指定文件的代码如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">pkl_path = <span class="string">&#x27;path_to_pkl_file&#x27;</span></span><br><span class="line">npy_path = <span class="string">&#x27;path_to_npy_file&#x27;</span></span><br><span class="line"></span><br><span class="line">pkl_data = pickle.load(pkl_path)</span><br><span class="line"><span class="built_in">print</span>(pkl_data)</span><br><span class="line"></span><br><span class="line">npy_data = np.load(npy_path)</span><br><span class="line"><span class="built_in">print</span>(npy_data)</span><br></pre></td></tr></table></figure>
+<p>读取完以后发现其实npy文件没有读的必要，train的话大概是6个G的数组文件，但是pkl是可以视作二维数组，里面第一维是skeleton文件的名称，第二维是skeleton文件对应的label序号(虽然label就是skeleton文件名A后面的数字-1)</p>
+<h2 id="关于skeleton数据">2. 关于skeleton数据</h2>
+<p><img src="/images/skeleton数据处理笔记/image-20220915125626604.png"
+alt="skeleton的joint" /></p>
+<p>我们知道每个skeleton包括25个joint，分别25个序号表示,文件中为每帧的参数，然后25行数据对应25个节点。这里就不细说了，文件可以直接用pycharm打开，也可以参考这篇文章
+<a
+href="https://blog.csdn.net/weixin_51450749/article/details/111768242">链接</a></p>
+<p><img src="/images/skeleton数据处理笔记/image-20220923115317445.png"
+alt="骨架节点按照paris连接" /></p>
+<h2 id="npy文件的参数">3. npy文件的参数</h2>
+<p>经过第一步中的文件读取，我们知道.npy文件存的都是矩阵，肉眼直接看是没有任何意义的，我们用np.load读取后，取它的shape</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = np.load(<span class="string">&#x27;../data/&#123;&#125;/&#123;&#125;_data_joint.npy&#x27;</span>.<span class="built_in">format</span>(dataset, <span class="built_in">set</span>))</span><br><span class="line">N, C, T, V, M = data.shape</span><br></pre></td></tr></table></figure>
+<p><strong>其中，N表示视频数量，C表示骨骼点的维度，T表示一个样本所采的帧数这里是300，注意不是样本的帧数，而是预先设定好的值;V表示骨骼点数量，M代表一帧中的人数。详细的解释在<a
+href="https://github.com/lshiwjx/2s-AGCN/issues/76">这里</a>。（关于C和T的解释来自于<a
+href="https://zhuanlan.zhihu.com/p/541261773">知乎</a>）</strong></p>
+]]></content>
+  </entry>
 </search>
