@@ -428,12 +428,6 @@ href="https://zhuanlan.zhihu.com/p/541261773">知乎</a>）</strong></p>
 ]]></content>
   </entry>
   <entry>
-    <title>笔记</title>
-    <url>/2022/09/26/%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[
-]]></content>
-  </entry>
-  <entry>
     <title>Ubuntu服务器设置挂载点并开机自动挂载</title>
     <url>/2022/09/30/Ubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE%E6%8C%82%E8%BD%BD%E7%82%B9%E5%B9%B6%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD/</url>
     <content><![CDATA[<p>最近服务器硬盘快满了，正好新生也开学一段时间了，几百G的空间肯定是不够用的，索性报了个4T的盘先顶一顶。</p>
