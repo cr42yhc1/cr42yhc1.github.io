@@ -433,4 +433,45 @@ href="https://zhuanlan.zhihu.com/p/541261773">知乎</a>）</strong></p>
     <content><![CDATA[
 ]]></content>
   </entry>
+  <entry>
+    <title>Ubuntu服务器设置挂载点并开机自动挂载</title>
+    <url>/2022/09/30/Ubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE%E6%8C%82%E8%BD%BD%E7%82%B9%E5%B9%B6%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD/</url>
+    <content><![CDATA[<p>最近服务器硬盘快满了，正好新生也开学一段时间了，几百G的空间肯定是不够用的，索性报了个4T的盘先顶一顶。</p>
+<p>买的希捷的企业盘（本来报的16T到手只有4T了）磁盘的安装每个机子都不一样，就不赘述了。</p>
+<p>到手以后没有螺丝，从上一个盘里拆了两个下来简单固定一下就好了。（jd真的是啥都不送，tb同款送SATA线和很多螺丝，还便宜很多）</p>
+<p>下面我们步入正题</p>
+<h2 id="检查磁盘">1. 检查磁盘</h2>
+<p>安装好磁盘后，重启服务器，连接上后输入</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo su</span><br><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
+<p><img
+src="D:\blog\source\images\Ubuntu服务器设置挂载点并开机自动挂载\image-20220930112749927.png"
+alt="磁盘状态" /></p>
+<p>可以看到我们的sdc已经出现在里面了，但是没有分区，sda和sdb都有对应的分区编号。</p>
+<h2 id="创建分区">2. 创建分区</h2>
+<p>现在我们为sdc创建分区，依稀记得本科操作系统学过。输入:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">fdisk /dev/sdc </span><br></pre></td></tr></table></figure>
+<p>然后是n新建分区，紧接着输入p，表示主分区，你也可以先按m看一下帮助</p>
+<p><img
+src="D:\blog\source\images\Ubuntu服务器设置挂载点并开机自动挂载\image-20220930134329847.png"
+alt="详细参数" /></p>
+<p>记得最后按w保存（有点像vim捏）</p>
+<h2 id="格式化分区并挂载">3. 格式化分区并挂载</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkfs.ext4 /dev/sdc1</span><br></pre></td></tr></table></figure>
+<p><img
+src="D:\blog\source\images\Ubuntu服务器设置挂载点并开机自动挂载\image-20220930134819813.png"
+alt="创建挂载点" /></p>
+<p>懒得想名字了，直接新建一个文件夹在home下，就叫sdc1</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir /home/sdc1</span><br><span class="line">mount /dev/sdc1 /home/sdc1</span><br></pre></td></tr></table></figure>
+<p><img
+src="D:\blog\source\images\Ubuntu服务器设置挂载点并开机自动挂载\image-20220930135120879.png"
+alt="挂载完成" /></p>
+<h2 id="开启自动挂载">4. 开启自动挂载</h2>
+<p>编辑/etc/fstab</p>
+<p>加入一行 /dev/sda1 /home/sdc1 ext4 defaults 0 0</p>
+<p>网上抄的，下次重启生效再更新这篇文章~</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>
