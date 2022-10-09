@@ -468,4 +468,57 @@ alt="挂载完成" /></p>
         <tag>Linux</tag>
       </tags>
   </entry>
+  <entry>
+    <title>从零开始配置ubuntu服务器</title>
+    <url>/2022/10/09/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%85%8D%E7%BD%AEubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <content><![CDATA[<p>最近新到一台服务器，本来以为搭载好了算力调度的系统，可是仔细想了想这才两张卡怎么调度嘛，开机一看就是个装了ubuntu桌面版的电脑，插上网线开整就行了。</p>
+<p>安装的时候总有些等待的时间，就趁这个空隙记录一下，防止学弟学妹忘了怎么安装。</p>
+<p>我们的目标就是配置好SSH、FTP、Anaconda（cuda开箱的时候已经配置好了就不管了）</p>
+<h2 id="准备工作">0. 准备工作</h2>
+<p>通电，插网线</p>
+<p>因为是桌面版的ubuntu所以键盘鼠标显示器什么的还是得插上。</p>
+<p>开机</p>
+<p>Ubuntu首次开机有个初始化，跟着配置就行了，很简单</p>
+<p>因为是GPU服务器，开着图形界面肯定占用显存，而且都服务器了要什么界面，直接CTRL+ALT+F2关了</p>
+<h2 id="安装ssh">1. 安装SSH</h2>
+<p>在这部之前你可以先在桌面版的设置里面更换软件源，我比较心急就没换了，设置里面可以自动选择最优的源。</p>
+<p>CTRL+ALT+T打开命令行，进入管理员权限，安装openssh-server</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+<p>安装完成后我们看一下ip地址，首次使用需要安装net-tools</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-get install net-tools</span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+<p><img
+src="D:\blog\source\images\从零开始配置ubuntu服务器\image-20221009160015696.png"
+alt="查看ip地址" /></p>
+<p>检查一下openssh是否启动</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ps -e | grep ssh # 检查是否启动</span><br><span class="line">sudo service ssh start # 如果没有启动</span><br></pre></td></tr></table></figure>
+<p>启动后，我们在局域网内的其他电脑上远程了连接刚刚的ip就可以了，端口默认22</p>
+<h2 id="安装ftp">2. 安装FTP</h2>
+<p>为了传输文件，通常还要再开个FTP</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-get install vsftpd # 安装</span><br><span class="line">service vsftpd start # 开启vsftpd</span><br><span class="line">service vsftpd status # 查看运行状态</span><br></pre></td></tr></table></figure>
+<p>然后就好了</p>
+<h2 id="安装anaconda">3. 安装Anaconda</h2>
+<p>为了控制不同的训练环境，通常需要Anaconda来安装多个虚拟环境，首先下载Anaconda的Linux版，<a
+href="www.anaconda.com">官网链接</a></p>
+<p><img
+src="D:\blog\source\images\从零开始配置ubuntu服务器\image-20221009170605132.png"
+alt="选择小企鹅" /></p>
+<p><img
+src="D:\blog\source\images\从零开始配置ubuntu服务器\image-20221009170636136.png"
+alt="选择版本" /></p>
+<p>下载完成后，通过FTP传输到服务器</p>
+<p>在服务器找到Anaconda的安装包</p>
+<p><img
+src="D:\blog\source\images\从零开始配置ubuntu服务器\image-20221009170815961.png"
+alt="找到Anaconda" /></p>
+<p>执行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh Anaconda3-2022.05-Linux-x86_64.sh </span><br></pre></td></tr></table></figure>
+<p>该yes的时候输入yes，阅读协议啥的直接按q跳过</p>
+<p>安装完以后重启一下服务器就好了</p>
+<p>重启完conda list测试一下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
+<p>之后就是安装pytorch的虚拟环境了</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda create -n env-name python=3.x</span><br><span class="line">conda install pytorch-gpu</span><br></pre></td></tr></table></figure>
+<p>缺啥直接conda install 就行了，玩久了发现也不需要啥教程</p>
+]]></content>
+  </entry>
 </search>
