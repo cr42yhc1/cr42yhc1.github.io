@@ -487,7 +487,7 @@ alt="挂载完成" /></p>
 <p>安装完成后我们看一下ip地址，首次使用需要安装net-tools</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-get install net-tools</span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
 <p><img
-src="D:\blog\source\images\从零开始配置ubuntu服务器\image-20221009160015696.png"
+src="/images/从零开始配置ubuntu服务器/image-20221009160015696-16653082359141.png"
 alt="查看ip地址" /></p>
 <p>检查一下openssh是否启动</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ps -e | grep ssh # 检查是否启动</span><br><span class="line">sudo service ssh start # 如果没有启动</span><br></pre></td></tr></table></figure>
@@ -500,10 +500,10 @@ alt="查看ip地址" /></p>
 <p>为了控制不同的训练环境，通常需要Anaconda来安装多个虚拟环境，首先下载Anaconda的Linux版，<a
 href="www.anaconda.com">官网链接</a></p>
 <p><img
-src="D:\blog\source\images\从零开始配置ubuntu服务器\image-20221009170605132.png"
+src="/images/从零开始配置ubuntu服务器/image-20221009170605132-16653082407673.png"
 alt="选择小企鹅" /></p>
 <p><img
-src="D:\blog\source\images\从零开始配置ubuntu服务器\image-20221009170636136.png"
+src="/images/从零开始配置ubuntu服务器/image-20221009170636136-16653082427595.png"
 alt="选择版本" /></p>
 <p>下载完成后，通过FTP传输到服务器</p>
 <p>在服务器找到Anaconda的安装包</p>
@@ -520,5 +520,15 @@ alt="找到Anaconda" /></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda create -n env-name python=3.x</span><br><span class="line">conda install pytorch-gpu</span><br></pre></td></tr></table></figure>
 <p>缺啥直接conda install 就行了，玩久了发现也不需要啥教程</p>
 ]]></content>
+      <categories>
+        <category>服务器维护日记</category>
+      </categories>
+      <tags>
+        <tag>服务器</tag>
+        <tag>linux</tag>
+        <tag>深度学习</tag>
+        <tag>cuda</tag>
+        <tag>pytorch</tag>
+      </tags>
   </entry>
 </search>
