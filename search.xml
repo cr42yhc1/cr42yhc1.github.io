@@ -531,4 +531,10 @@ alt="找到Anaconda" /></p>
         <tag>pytorch</tag>
       </tags>
   </entry>
+  <entry>
+    <title>cudatoolkit和nvidia-driver冲突无法同时安装的解决办法</title>
+    <url>/2022/10/18/cudatoolkit%E5%92%8Cnvidia-driver%E5%86%B2%E7%AA%81%E6%97%A0%E6%B3%95%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[
+]]></content>
+  </entry>
 </search>
