@@ -358,7 +358,7 @@ enabled其实就是pytorch版本不支持cuda，也就是说我的pytorch变成c
 src="/images/ubuntu下pytorch不支持cuda如何修改/image-20220903181157417.png"
 alt="报错信息" /></p>
 <p>首先我们检查一下是不是不支持cuda，先进入python，顺便记一下python的版本，方便后面覆盖。我这里python版本是3.9</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)  <span class="comment"># 查看torch版本号，不看也行</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is__available())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)  <span class="comment"># 查看torch版本号，不看也行</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
 <p>pytorch版本号不看也罢，反正cuda这里返回是False，意思也就是我们这个版本的pytorch是不支持GPU的。</p>
 <p><img
 src="/images/ubuntu下pytorch不支持cuda如何修改/image-20220903181314252.png"

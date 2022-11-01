@@ -31,7 +31,7 @@
 <meta property="og:description" content="linux下的Pytorch装成CPU版本，如何切换成GPU版本">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-03T10:11:11.000Z">
-<meta property="article:modified_time" content="2022-09-06T02:01:32.240Z">
+<meta property="article:modified_time" content="2022-11-01T08:44:26.097Z">
 <meta property="article:author" content="cr42y9">
 <meta property="article:tag" content="cuda">
 <meta property="article:tag" content="pytorch">
@@ -230,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-06 10:01:32" itemprop="dateModified" datetime="2022-09-06T10:01:32+08:00">2022-09-06</time>
+                <time title="修改时间：2022-11-01 16:44:26" itemprop="dateModified" datetime="2022-11-01T16:44:26+08:00">2022-11-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,7 +254,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>788</span>
+              <span>787</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -280,7 +280,7 @@ enabled其实就是pytorch版本不支持cuda，也就是说我的pytorch变成c
 src="/images/ubuntu下pytorch不支持cuda如何修改/image-20220903181157417.png"
 alt="报错信息" /></p>
 <p>首先我们检查一下是不是不支持cuda，先进入python，顺便记一下python的版本，方便后面覆盖。我这里python版本是3.9</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)  <span class="comment"># 查看torch版本号，不看也行</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is__available())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)  <span class="comment"># 查看torch版本号，不看也行</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
 <p>pytorch版本号不看也罢，反正cuda这里返回是False，意思也就是我们这个版本的pytorch是不支持GPU的。</p>
 <p><img
 src="/images/ubuntu下pytorch不支持cuda如何修改/image-20220903181314252.png"
