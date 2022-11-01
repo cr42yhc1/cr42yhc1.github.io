@@ -23,14 +23,17 @@
     var CONFIG = {"hostname":"blog.crazy9.tk","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"Sidebar Display (only for Muse | Mist), available values":["post    expand on posts automatically. Default.","always  expand for all pages automatically.","hide    expand only when click on the sidebar toggle icon.","remove  totally remove sidebar including sidebar toggle."],"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="在安装配置深度学习服务器的时候遇到的nvidia的坑。。。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="cudatoolkit和nvidia-driver冲突无法同时安装的解决办法">
 <meta property="og:url" content="http://blog.crazy9.tk/2022/10/18/cudatoolkit%E5%92%8Cnvidia-driver%E5%86%B2%E7%AA%81%E6%97%A0%E6%B3%95%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/index.html">
 <meta property="og:site_name" content="cr42y9的仓库">
+<meta property="og:description" content="在安装配置深度学习服务器的时候遇到的nvidia的坑。。。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-18T14:08:03.000Z">
-<meta property="article:modified_time" content="2022-10-18T14:08:03.712Z">
+<meta property="article:modified_time" content="2022-11-01T08:46:11.531Z">
 <meta property="article:author" content="cr42y9">
+<meta property="article:tag" content="ubuntu - cuda - 服务器 - conda">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://blog.crazy9.tk/2022/10/18/cudatoolkit%E5%92%8Cnvidia-driver%E5%86%B2%E7%AA%81%E6%97%A0%E6%B3%95%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
@@ -130,12 +133,12 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">17</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -220,6 +223,22 @@
 
               <time title="创建时间：2022-10-18 22:08:03" itemprop="dateCreated datePublished" datetime="2022-10-18T22:08:03+08:00">2022-10-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-01 16:46:11" itemprop="dateModified" datetime="2022-11-01T16:46:11+08:00">2022-11-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%B4%E6%8A%A4%E6%97%A5%E8%AE%B0-linux/" itemprop="url" rel="index"><span itemprop="name">服务器维护日记 - linux</span></a>
+                </span>
+            </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -233,7 +252,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>0</span>
+              <span>719</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -241,6 +260,7 @@
               </span>
               <span>1 分钟</span>
             </span>
+            <div class="post-description">在安装配置深度学习服务器的时候遇到的nvidia的坑。。。</div>
 
         </div>
       </header>
@@ -251,7 +271,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="序">序</h2>
+<p>最近连装两台服务器，都出现了nvcc和nvidia-smi冲突的问题。要么是没有nvcc，要么是NVIDIA-SMI
+has failed because it couldn't communicate with the NVIDIA driver. Make
+sure that the latest NVIDIA driver is installed and running.</p>
+<p>搞得人很崩溃，但是我遇到的问题和网上能查到的大部分情况并不相同，因此记录一下防止以后再次发生。</p>
+<p>先说一下网上能查到的大部分解决方法：</p>
+<p>原因是内核版本更新导致内核版本和驱动不匹配。</p>
+<p>解决方案：</p>
+<p>https://blog.csdn.net/xiaojinger_123/article/details/121161446</p>
+<h2 id="正文">正文</h2>
+<p>因为配置过程繁琐，本人忙得焦头烂额一度想要摆大烂，因此没有截图。只能凭借记忆。</p>
+<p>首先问题出在ubuntu在安装nvidia-driver的时候会卸载nvcc，而安装nvcc的时候会卸载nvidia-driver，因此大家在apt
+install的时候注意看一下remove的包里面有没有出现driver或者cuda-toolkit。</p>
+<p>我装了两台机子遇到了两种情况，第一台机子时间比较久远，简单说一下，在nvidia-smi能够出现界面，但是nvcc
+-V显示no such file or
+dictionary的时候不要直接用命令安装cuda-toolkit，否则会卸载driver。</p>
+<p>解决方案是源自一个<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/122286055">知乎</a>的回答</p>
+<p><a
+target="_blank" rel="noopener" href="https://developer.nvidia.cn/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=22.04&amp;target_type=runfile_local">cudatoolkit下载地址</a></p>
+<p><img
+src="/images/cudatoolkit和nvidia-driver冲突无法同时安装的解决办法/image-20221101161454538-16672905136681.png"
+alt="选项如图" /></p>
+<p>之后就是用cuda的安装包安装一下就好了，但是注意安装的时候把驱动的选项去掉。</p>
+<p>如果切换内核后仍然不显示nvidia-smi，我在几经周折后参考这篇<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/u011119817/article/details/100520669?app_version=5.10.0&amp;csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22100520669%22%2C%22source%22%3A%22unlogin%22%7D&amp;utm_source=app">文章</a>成功解决</p>
 
     </div>
 
@@ -260,6 +305,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ubuntu-cuda-%E6%9C%8D%E5%8A%A1%E5%99%A8-conda/" rel="tag"># ubuntu - cuda - 服务器 - conda</a>
+          </div>
 
         
 
@@ -329,6 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -351,13 +400,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -408,12 +457,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">11k</span>
+    <span title="站点总字数">12k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">10 分钟</span>
+    <span title="站点阅读时长">11 分钟</span>
 </div>
 
         

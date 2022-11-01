@@ -534,7 +534,38 @@ alt="找到Anaconda" /></p>
   <entry>
     <title>cudatoolkit和nvidia-driver冲突无法同时安装的解决办法</title>
     <url>/2022/10/18/cudatoolkit%E5%92%8Cnvidia-driver%E5%86%B2%E7%AA%81%E6%97%A0%E6%B3%95%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[
+    <content><![CDATA[<h2 id="序">序</h2>
+<p>最近连装两台服务器，都出现了nvcc和nvidia-smi冲突的问题。要么是没有nvcc，要么是NVIDIA-SMI
+has failed because it couldn't communicate with the NVIDIA driver. Make
+sure that the latest NVIDIA driver is installed and running.</p>
+<p>搞得人很崩溃，但是我遇到的问题和网上能查到的大部分情况并不相同，因此记录一下防止以后再次发生。</p>
+<p>先说一下网上能查到的大部分解决方法：</p>
+<p>原因是内核版本更新导致内核版本和驱动不匹配。</p>
+<p>解决方案：</p>
+<p>https://blog.csdn.net/xiaojinger_123/article/details/121161446</p>
+<h2 id="正文">正文</h2>
+<p>因为配置过程繁琐，本人忙得焦头烂额一度想要摆大烂，因此没有截图。只能凭借记忆。</p>
+<p>首先问题出在ubuntu在安装nvidia-driver的时候会卸载nvcc，而安装nvcc的时候会卸载nvidia-driver，因此大家在apt
+install的时候注意看一下remove的包里面有没有出现driver或者cuda-toolkit。</p>
+<p>我装了两台机子遇到了两种情况，第一台机子时间比较久远，简单说一下，在nvidia-smi能够出现界面，但是nvcc
+-V显示no such file or
+dictionary的时候不要直接用命令安装cuda-toolkit，否则会卸载driver。</p>
+<p>解决方案是源自一个<a
+href="https://zhuanlan.zhihu.com/p/122286055">知乎</a>的回答</p>
+<p><a
+href="https://developer.nvidia.cn/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=22.04&amp;target_type=runfile_local">cudatoolkit下载地址</a></p>
+<p><img
+src="/images/cudatoolkit和nvidia-driver冲突无法同时安装的解决办法/image-20221101161454538-16672905136681.png"
+alt="选项如图" /></p>
+<p>之后就是用cuda的安装包安装一下就好了，但是注意安装的时候把驱动的选项去掉。</p>
+<p>如果切换内核后仍然不显示nvidia-smi，我在几经周折后参考这篇<a
+href="https://blog.csdn.net/u011119817/article/details/100520669?app_version=5.10.0&amp;csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22100520669%22%2C%22source%22%3A%22unlogin%22%7D&amp;utm_source=app">文章</a>成功解决</p>
 ]]></content>
+      <categories>
+        <category>服务器维护日记 - linux</category>
+      </categories>
+      <tags>
+        <tag>ubuntu - cuda - 服务器 - conda</tag>
+      </tags>
   </entry>
 </search>
