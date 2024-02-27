@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>树莓派Raspiberry4B配置电视盒子 | Cr42y9的仓库</title><meta name="author" content="cr42y9"><meta name="copyright" content="cr42y9"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在树莓派端搭建Kodi电视盒子系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派Raspiberry4B配置电视盒子">
+<meta property="og:url" content="http://blog.hfuiao.top/2024/01/09/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/index.html">
+<meta property="og:site_name" content="Cr42y9的仓库">
+<meta property="og:description" content="在树莓派端搭建Kodi电视盒子系统">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image17.png">
+<meta property="article:published_time" content="2024-01-09T13:16:59.000Z">
+<meta property="article:modified_time" content="2024-02-01T18:00:01.148Z">
+<meta property="article:author" content="cr42y9">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="树莓派">
+<meta property="article:tag" content="电视盒子">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image17.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://blog.hfuiao.top/2024/01/09/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '树莓派Raspiberry4B配置电视盒子',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-02 02:00:01'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="Cr42y9的仓库" type="application/atom+xml">
+</head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image17.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Cr42y9的仓库"><span class="site-name">Cr42y9的仓库</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">树莓派Raspiberry4B配置电视盒子</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-09T13:16:59.000Z" title="发表于 2024-01-09 21:16:59">2024-01-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-01T18:00:01.148Z" title="更新于 2024-02-02 02:00:01">2024-02-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">651</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="树莓派Raspiberry4B配置电视盒子"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><p>刷入RaspiOS后在树莓派端开启4k硬件加速,之后安装kodi并且在kodi启用iptv</p>
+<h2 id="系统刷入"><a href="#系统刷入" class="headerlink" title="系统刷入"></a>系统刷入</h2><p>选择RaspiOS作为系统刷入TF卡，<a target="_blank" rel="noopener" href="https://downloads.raspberrypi.org/raspios_arm64/images/">官方镜像链接</a>另外是官方给出的<a target="_blank" rel="noopener" href="https://www.raspberrypi.com/software/">刷入工具</a><br>提一嘴参考教程中没有提到的，由于树莓派有两个miniHDMI输出口，在刷入系统之前一定要先开启SSH，并设定用户名和密码，否则可能需要手动接入键鼠和显示器才能操作。</p>
+<p>通电后查看wifi后台找到树莓派的IP地址然后直接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@ip.to.raspiberry</span><br></pre></td></tr></table></figure>
+<p>输入密码即可登录<br>然后是debian系列常规操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br><span class="line">apt update</span><br><span class="line">apt dist-upgrade</span><br></pre></td></tr></table></figure>
+<p>之后是开启4K60fps的硬件加速 <a target="_blank" rel="noopener" href="https://cloud-atlas.readthedocs.io/zh-cn/latest/arm/raspberry_pi/startup/pi_display_accelerate.html">参考教程</a></p>
+<h2 id="4k硬件加速"><a href="#4k硬件加速" class="headerlink" title="4k硬件加速"></a>4k硬件加速</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libgles2-mesa libgles2-mesa-dev xorg-dev</span><br></pre></td></tr></table></figure>
+
+
+<p>之后我们需要在config.txt中的 all 下添加如下配置,config的位置通常在&#x2F;boot&#x2F;config.txt编辑前可以先cp备份一下。</p>
+<p><img src="/images/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/image+20240122123904648.png"></p>
+<p>之后我们reboot机器,等待重启</p>
+<p>重启后依次执行如下指令检查硬件加速是否成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/device-tree/soc/firmwarekms@7e600000/status</span><br><span class="line">cat /proc/device-tree/v3dbus/v3d@7ec04000/status</span><br></pre></td></tr></table></figure>
+<p>若都返回okay则表示硬件加速开启成功。</p>
+<h2 id="安装Kodi"><a href="#安装Kodi" class="headerlink" title="安装Kodi"></a>安装Kodi</h2><p>这个很简单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install kodi</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置VNC"><a href="#配置VNC" class="headerlink" title="配置VNC"></a>配置VNC</h2><p>由于手头没有microHDMI线，现在需要先开启vnc进行图形化远程，有线的略过此步骤。<br>RaspiOS自带了VNC-server，开启后，我们需要在windows安装VNC-viewer，<a target="_blank" rel="noopener" href="https://www.realvnc.com/en/connect/download/viewer/">官网链接</a>安装后输入树莓派ip以及登录密码即可进行远程连接。</p>
+<h4 id="开启Raspi端的VNC"><a href="#开启Raspi端的VNC" class="headerlink" title="开启Raspi端的VNC"></a>开启Raspi端的VNC</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raspi-config</span><br></pre></td></tr></table></figure>
+<p>之后选择interface option<br><img src="/images/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/image+20240122123921267.png"><img src="/images/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/image+20240122123929222.png"></p>
+<p>选择vnc然后enable，等待生成密钥。<br>开启后需要选择vnc的分辨率，有些教程在advanced options中可以找到resolution,但是新版的RaspiOS更改了resolution的位置，如果你找不到的话，试试 Display options -&gt; VNC Resolution<br>选择你适应的分辨率即可，我是1280*720能用就行。</p>
+<h4 id="电脑连接VNC-server"><a href="#电脑连接VNC-server" class="headerlink" title="电脑连接VNC-server"></a>电脑连接VNC-server</h4><p>电脑端启动vnc-viewer，按照引导连接树莓派即可<br><img src="/images/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/image+20240122123948615.png"></p>
+<h2 id="Kodi配置"><a href="#Kodi配置" class="headerlink" title="Kodi配置"></a>Kodi配置</h2><h4 id="Kodi中文配置"><a href="#Kodi中文配置" class="headerlink" title="Kodi中文配置"></a>Kodi中文配置</h4><p>要配置中文的话，可以下载中文包，但是一定！一定！一定！先把字体设置成arial，不然就是口口世界<br>设置-&gt;界面-&gt;皮肤-&gt;Estuary下面数第四个就是字体<br><img src="/images/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/image+20240122124005822.png"><img src="/images/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/image+20240122124019041.png"></p>
+<p>这个改完再改成中文,别问我为啥图里是中文,我从口口来的。</p>
+<h4 id="Kodi-iptv配置"><a href="#Kodi-iptv配置" class="headerlink" title="Kodi iptv配置"></a>Kodi iptv配置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install kodi-pvr-iptvsimple</span><br></pre></td></tr></table></figure>
+<p>重启kodi，我是直接top找到kodi的pid直接kill的，直接点退出好像会卡住<br>重启后问你是否添加插件，选择是<img src="/images/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/image+20240122124040024.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://blog.hfuiao.top">cr42y9</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://blog.hfuiao.top/2024/01/09/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/">http://blog.hfuiao.top/2024/01/09/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.hfuiao.top" target="_blank">Cr42y9的仓库</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a><a class="post-meta__tags" href="/tags/%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/">电视盒子</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image17.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/09/26/DP%E5%A4%8D%E4%B9%A0-01%E8%83%8C%E5%8C%85/" title="DP复习-01背包"><img class="cover" src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">DP复习-01背包</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/09/30/Ubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE%E6%8C%82%E8%BD%BD%E7%82%B9%E5%B9%B6%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD/" title="Ubuntu服务器设置挂载点并开机自动挂载"><img class="cover" src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image6.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-30</div><div class="title">Ubuntu服务器设置挂载点并开机自动挂载</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">cr42y9</div><div class="author-info__description">废物研究生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/cr42yhc1"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">主要步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%B7%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">系统刷入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4k%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F"><span class="toc-number">3.</span> <span class="toc-text">4k硬件加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Kodi"><span class="toc-number">4.</span> <span class="toc-text">安装Kodi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEVNC"><span class="toc-number">5.</span> <span class="toc-text">配置VNC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%90%AFRaspi%E7%AB%AF%E7%9A%84VNC"><span class="toc-number">5.0.1.</span> <span class="toc-text">开启Raspi端的VNC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E8%84%91%E8%BF%9E%E6%8E%A5VNC-server"><span class="toc-number">5.0.2.</span> <span class="toc-text">电脑连接VNC-server</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kodi%E9%85%8D%E7%BD%AE"><span class="toc-number">6.</span> <span class="toc-text">Kodi配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Kodi%E4%B8%AD%E6%96%87%E9%85%8D%E7%BD%AE"><span class="toc-number">6.0.1.</span> <span class="toc-text">Kodi中文配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kodi-iptv%E9%85%8D%E7%BD%AE"><span class="toc-number">6.0.2.</span> <span class="toc-text">Kodi iptv配置</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/01/09/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/" title="树莓派Raspiberry4B配置电视盒子"><img src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image17.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="树莓派Raspiberry4B配置电视盒子"/></a><div class="content"><a class="title" href="/2024/01/09/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/" title="树莓派Raspiberry4B配置电视盒子">树莓派Raspiberry4B配置电视盒子</a><time datetime="2024-01-09T13:16:59.000Z" title="发表于 2024-01-09 21:16:59">2024-01-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/26/DP%E5%A4%8D%E4%B9%A0-01%E8%83%8C%E5%8C%85/" title="DP复习-01背包"><img src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DP复习-01背包"/></a><div class="content"><a class="title" href="/2023/09/26/DP%E5%A4%8D%E4%B9%A0-01%E8%83%8C%E5%8C%85/" title="DP复习-01背包">DP复习-01背包</a><time datetime="2023-09-26T08:43:48.000Z" title="发表于 2023-09-26 16:43:48">2023-09-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/24/AB22-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F-BFS%EF%BC%8CDFS/" title="AB22 岛屿数量 BFS，DFS"><img src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image70.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AB22 岛屿数量 BFS，DFS"/></a><div class="content"><a class="title" href="/2023/09/24/AB22-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F-BFS%EF%BC%8CDFS/" title="AB22 岛屿数量 BFS，DFS">AB22 岛屿数量 BFS，DFS</a><time datetime="2023-09-24T11:52:53.000Z" title="发表于 2023-09-24 19:52:53">2023-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/24/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找"><img src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image55.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二分查找"/></a><div class="content"><a class="title" href="/2023/09/24/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找">二分查找</a><time datetime="2023-09-24T11:52:53.000Z" title="发表于 2023-09-24 19:52:53">2023-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/07/docker%E5%AF%BC%E5%85%A5%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F/" title="docker导入本地镜像"><img src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker导入本地镜像"/></a><div class="content"><a class="title" href="/2023/04/07/docker%E5%AF%BC%E5%85%A5%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F/" title="docker导入本地镜像">docker导入本地镜像</a><time datetime="2023-04-07T11:51:54.000Z" title="发表于 2023-04-07 19:51:54">2023-04-07</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image17.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By cr42y9</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

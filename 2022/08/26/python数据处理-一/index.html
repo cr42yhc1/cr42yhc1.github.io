@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>python数据处理(一) | Cr42y9的仓库</title><meta name="author" content="cr42y9"><meta name="copyright" content="cr42y9"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="python读取文件、list取交集、验证文件是否相同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python数据处理(一)">
+<meta property="og:url" content="http://blog.hfuiao.top/2022/08/26/python%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E4%B8%80/index.html">
+<meta property="og:site_name" content="Cr42y9的仓库">
+<meta property="og:description" content="python读取文件、list取交集、验证文件是否相同">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image18.png">
+<meta property="article:published_time" content="2022-08-26T13:07:57.000Z">
+<meta property="article:modified_time" content="2024-01-19T04:08:30.418Z">
+<meta property="article:author" content="cr42y9">
+<meta property="article:tag" content="基本操作">
+<meta property="article:tag" content="数据处理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image18.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://blog.hfuiao.top/2022/08/26/python%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E4%B8%80/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'python数据处理(一)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-19 12:08:30'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="Cr42y9的仓库" type="application/atom+xml">
+</head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image18.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Cr42y9的仓库"><span class="site-name">Cr42y9的仓库</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">python数据处理(一)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-26T13:07:57.000Z" title="发表于 2022-08-26 21:07:57">2022-08-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-19T04:08:30.418Z" title="更新于 2024-01-19 12:08:30">2024-01-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">909</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="python数据处理(一)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近期终于在进行实验工作了，期间肯定是少不了处理数据的，虽然主要工作就是处理数据。目前的工作是在NTU-RGB+D的数据集上进行测试，后期可能也会做PKU-MMD等数据集（效果好的话）</p>
+<p>考虑到我出现的问题实在太多了，肯定有后续，所以这个python数据处理肯定是有下一篇的。。。</p>
+<p>本着代码能执行就不改的原则，我的代码其实并不规范，毕竟在python方面我也就个初学者水平。</p>
+<p>先说一下我们遇到的问题：我自己做了一个NTU-RGB+D的子集，但是要划分x-view和x-sub以及train、test，其实这里搞反了，我提前划分好再做子集就没这么多事了，因为这个折腾了很久。不过本身代码能力就不强，就当还债了<del>（负债累累了属于是）</del></p>
+<h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><p>那么我们的思路就是根据其他项目里划分好的数据列表，这里参考<a target="_blank" rel="noopener" href="https://github.com/xp-ji/DOGV-ST3D">DOGV</a> ,在这个项目里列表文件的位置是</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DOGV-master/configs/NTU_120</span><br><span class="line">DOGV-master/configs/NTU_RGBD</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/python%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E4%B8%80/image-20220826213040345-166152064255717.png" alt="列表文件"></p>
+<p>先复习一下怎么读文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(filename, <span class="string">&#x27;r&#x27;</span>)  <span class="comment"># r表示只读</span></span><br></pre></td></tr></table></figure>
+
+<p>其他参数如下，<a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-func-open.html">菜鸟教程</a>抄的<img src="/images/python%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E4%B8%80/image-20220826212645656-16615204110401-16615204157093-16615204172735-16615204285377-16615205174429-166152054574513-166152054893815.png" alt="open函数的参数"></p>
+<p>现在文件读进去了，然后我们需要逐行取出文件里面的内容，先看下文件的格式</p>
+<p><img src="/images/python%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E4%B8%80/image-20220826213215262.png" alt="列表文件内容"></p>
+<p>我们能看出来，每行由三个部分组成。第一部分是Depth文件的文件名，第二部分是A后面的数-1也就是对应动作的标签，最后一部分是这个文件的总帧数。每个部分用\t也就是制表符隔开。所以想得到文件名，按照depth_utils.py中的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_list_file, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> flp:</span><br><span class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> flp.readlines():</span><br><span class="line">		flp_line = line.strip(<span class="string">&quot;\n&quot;</span>).split(<span class="string">&quot;\t&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>按照\n和\t隔开每个部分，flp_line[0]就是我们要的文件名。</p>
+<h2 id="取交集"><a href="#取交集" class="headerlink" title="取交集"></a>取交集</h2><p>看到这里你已经能够读取原始项目中的列表文件了，现在是得到我们自己制作的子集的文件列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">path = <span class="string">&#x27;path_to_your_dataset&#x27;</span></span><br><span class="line">data_list = []</span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">	data_list.append(file)</span><br></pre></td></tr></table></figure>
+
+<p>ok,现在你得到了两个list，那么我们要怎么取交集呢？</p>
+<p>最简单的办法当然是暴力，但是复杂度太高了，非常浪费时间，而且非常不优雅。</p>
+<p>python中当然是可以直接取交集的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data_list = []  <span class="comment"># 你的列表</span></span><br><span class="line">file_list =[]  <span class="comment"># 别人的列表</span></span><br><span class="line">inter_list = <span class="built_in">list</span>(<span class="built_in">set</span>(data_list).intersection(<span class="built_in">set</span>(file_list)))  <span class="comment"># 取交集</span></span><br></pre></td></tr></table></figure>
+
+<p>这样就可以把交集的结果保存到inter_list里了，为了保险，建议在这步操作执行后看一下inter_list里的内容</p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>根据上面的操作你已经可以得到自己的x-view和x-sub了，但是我还有个担心的地方，就是有没有一种可能，我取完交集后，生成的两个文件是一样的？我们需要验证两个文件是否相同，你可以同时打开两个文件然后readlines逐行比较，但是十分不优雅，直接这么做的人肯定也不会上网搜博客了。</p>
+<p>我们引入filecmp这个库，一看名字就知道是file compare，执行后返回一个bool值，我们直接放if里，如果返回1表示两个文件相同，那么我们打印 “坏了”，表示你这俩文件一样，当然如果不一样则打印“好了”表示  那没事了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> filecmp</span><br><span class="line"><span class="keyword">if</span> filecmp.cmp(<span class="string">&#x27;x-view.txt&#x27;</span>, <span class="string">&#x27;x-sub.txt&#x27;</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;坏了&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;好了&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://blog.hfuiao.top">cr42y9</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://blog.hfuiao.top/2022/08/26/python%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E4%B8%80/">http://blog.hfuiao.top/2022/08/26/python%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E4%B8%80/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.hfuiao.top" target="_blank">Cr42y9的仓库</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">基本操作</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image18.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/09/03/ubuntu%E4%B8%8Bpytorch%E4%B8%8D%E6%94%AF%E6%8C%81cuda%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9/" title="ubuntu下pytorch不支持cuda的修复方案"><img class="cover" src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image39.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ubuntu下pytorch不支持cuda的修复方案</div></div></a></div><div class="next-post pull-right"><a href="/2022/08/11/%E5%9B%9E%E9%A1%BE%E5%A4%84%E7%90%86%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" title="回顾处理图像梯度中遇到的一些问题"><img class="cover" src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image38.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">回顾处理图像梯度中遇到的一些问题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/07/25/IOS-Android-Windows-Ubuntu%E9%80%9A%E8%BF%87%E6%9F%90%E4%BA%9B%E8%BD%AF%E4%BB%B6%E8%AE%BF%E9%97%AE%E5%AD%A6%E6%9C%AF%E7%BD%91%E7%AB%99/" title="IOS-Android-Windows-Ubuntu通过某些软件访问学术网站"><img class="cover" src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image57.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-25</div><div class="title">IOS-Android-Windows-Ubuntu通过某些软件访问学术网站</div></div></a></div><div><a href="/2022/07/29/Numpy%E6%8A%A5%E9%94%99numpy.ndarray-size-changed/" title="Numpy报错numpy.ndarray size changed"><img class="cover" src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-29</div><div class="title">Numpy报错numpy.ndarray size changed</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">cr42y9</div><div class="author-info__description">废物研究生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/cr42yhc1"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">读取文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E4%BA%A4%E9%9B%86"><span class="toc-number">3.</span> <span class="toc-text">取交集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">验证</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/01/09/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/" title="树莓派Raspiberry4B配置电视盒子"><img src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image17.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="树莓派Raspiberry4B配置电视盒子"/></a><div class="content"><a class="title" href="/2024/01/09/%E6%A0%91%E8%8E%93%E6%B4%BERaspiberry4B%E9%85%8D%E7%BD%AE%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/" title="树莓派Raspiberry4B配置电视盒子">树莓派Raspiberry4B配置电视盒子</a><time datetime="2024-01-09T13:16:59.000Z" title="发表于 2024-01-09 21:16:59">2024-01-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/26/DP%E5%A4%8D%E4%B9%A0-01%E8%83%8C%E5%8C%85/" title="DP复习-01背包"><img src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DP复习-01背包"/></a><div class="content"><a class="title" href="/2023/09/26/DP%E5%A4%8D%E4%B9%A0-01%E8%83%8C%E5%8C%85/" title="DP复习-01背包">DP复习-01背包</a><time datetime="2023-09-26T08:43:48.000Z" title="发表于 2023-09-26 16:43:48">2023-09-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/24/AB22-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F-BFS%EF%BC%8CDFS/" title="AB22 岛屿数量 BFS，DFS"><img src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image70.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AB22 岛屿数量 BFS，DFS"/></a><div class="content"><a class="title" href="/2023/09/24/AB22-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F-BFS%EF%BC%8CDFS/" title="AB22 岛屿数量 BFS，DFS">AB22 岛屿数量 BFS，DFS</a><time datetime="2023-09-24T11:52:53.000Z" title="发表于 2023-09-24 19:52:53">2023-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/24/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找"><img src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image55.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二分查找"/></a><div class="content"><a class="title" href="/2023/09/24/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找">二分查找</a><time datetime="2023-09-24T11:52:53.000Z" title="发表于 2023-09-24 19:52:53">2023-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/07/docker%E5%AF%BC%E5%85%A5%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F/" title="docker导入本地镜像"><img src="https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker导入本地镜像"/></a><div class="content"><a class="title" href="/2023/04/07/docker%E5%AF%BC%E5%85%A5%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F/" title="docker导入本地镜像">docker导入本地镜像</a><time datetime="2023-04-07T11:51:54.000Z" title="发表于 2023-04-07 19:51:54">2023-04-07</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://raw.githubusercontent.com/cr42yhc1/crazy9-image/new-branch/blog_img_png/image18.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By cr42y9</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
